@@ -1,0 +1,6 @@
+{
+    "device": "alsa_output.usb-Schiit_Audio_Schiit_Modi_3E-00.analog-stereo",
+    "device-description": "Schiit Modi 3E Analog Stereo",
+    "device-profile": "analog-output",
+    "preset-name": "DT 1990"
+}
