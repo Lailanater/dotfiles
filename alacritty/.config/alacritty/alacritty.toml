@@ -62,6 +62,10 @@ text = "CellBackground"
 columns=130
 lines=35
 
+[window]
+opacity=0.8
+blur=true
+
 [font]
 normal = { family = "JetBrainsMono Nerd Font", style = "Regular" }
 size=14
