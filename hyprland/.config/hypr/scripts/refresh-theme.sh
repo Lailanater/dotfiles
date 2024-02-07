@@ -9,8 +9,8 @@ wallpaper="${wallpaper_dir}/$(ls -1 "$wallpaper_dir" | shuf -n1)"
 # Set wallpaper via swww
 swww img $wallpaper
 
-# Set wallpaper colors via pywal
+# Set general theme colors via pywal
 wal -q -i $wallpaper
 
-# Set firefox colors via pywal
+# Set firefox theme colors via pywal
 pywalfox update
