@@ -5,24 +5,23 @@
     "layer": "top",
     "modules-left": ["clock#date", "hyprland/window"],
     "modules-center": ["hyprland/workspaces"],
-    "modules-right": ["gamemode", "pulseaudio", "network", "cpu", "temperature", "clock#time", "tray"],
+    "modules-right": ["gamemode", "group/audio", "network", "cpu", "temperature", "clock#time", "tray"],
     // Modules configuration
-    "pulseaudio": {
-        "format": "{volume}% {icon} {format_source}",
-        "format-bluetooth": "{volume}% {icon} {format_source}",
-        "format-bluetooth-muted": " {icon} {format_source}",
-        "format-muted": " {format_source}",
-        "format-source": "{volume}% ",
-        "format-source-muted": "",
+    "group/audio": {
+	"orientation": "horizontal",
+    	"modules": ["pulseaudio#audio", "pulseaudio#mic"]
+    },
+    "pulseaudio#audio": {
+        "format": "{volume}% {icon}",
         "format-icons": {
-            "headphone": "",
-            "hands-free": "",
-            "headset": "",
-            "phone": "",
-            "portable": "",
-            "car": "",
             "default": ["", "", ""]
         },
+        "on-click": "pavucontrol"
+    },
+    "pulseaudio#mic": {
+        "format": "{format_source}",
+        "format-source": "{volume}% ",
+        "format-source-muted": "",
         "on-click": "pavucontrol"
     },
     "network": {
