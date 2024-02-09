@@ -63,4 +63,4 @@ configuration {
     margin:     0px 0.3em 0em 0em ;
 }
 
-@import "~/.cache/wal/colors-rofi-light.rasi"
+@import "~/.cache/wal/colors-rofi-dark.rasi"
