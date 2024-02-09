@@ -34,8 +34,7 @@ window#waybar.empty #window {
 }
 
 #workspaces {
-    padding-top: 2px;
-    padding-bottom: 2px;
+    padding: 2px;
 }
 
 #workspaces button {
