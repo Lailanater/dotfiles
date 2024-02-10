@@ -9,7 +9,7 @@ window#waybar {
 }
 
 @define-color bg @color0;
-@define-color txt @color6;
+@define-color txt @color7;
 
 #clock,
 #cpu,
