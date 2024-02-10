@@ -5,7 +5,7 @@
     "layer": "top",
     "modules-left": ["clock#date", "hyprland/window"],
     "modules-center": ["hyprland/workspaces"],
-    "modules-right": ["gamemode", "group/audio", "network", "cpu", "temperature", "clock#time", "tray"],
+    "modules-right": ["gamemode", "group/audio", "network", "cpu", "clock#time", "tray"],
     // Modules configuration
     "group/audio": {
 	"orientation": "horizontal",
@@ -32,11 +32,6 @@
     "cpu": {
         "format": "{usage}% ",
         "tooltip": true,
-    },
-    "temperature": {
-        "critical-threshold": 80,
-        "format": "{temperatureC}°C {icon}",
-        "format-icons": ["", "", ""]
     },
     "clock#date": {
         "format": "{:%b %d}",
