@@ -1,0 +1,8 @@
+[os]
+disabled = false
+
+[os.symbols]
+Arch = ' 󰣇 '
+
+[directory]
+truncation_length = 8
