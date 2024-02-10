@@ -1,7 +1,5 @@
 #!/bin/bash
 
-source ~/.cache/wal/colors.sh
-
 # Function to get a random element from an array
 random_element() {
   local array=("$@")
@@ -23,6 +21,9 @@ wallpaper_dir="$HOME/.config/hypr/wallpapers"
 
 # Set select random wallpaper and set general theme colors via pywal
 wal -q -i "$wallpaper_dir"
+
+# Import generated colors from above
+source ~/.cache/wal/colors.sh
 
 # Set wallpaper via swww
 swww img "$wallpaper" --transition-fps  165 --transition-type "$selected_transition" --transition-pos "$selected_position" --transition-angle "$selected_angle"
