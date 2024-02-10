@@ -1,3 +1,5 @@
+source = ~/.cache/wal/colors-hyprland.conf
+
 $mainMod = SUPER
 
 $terminal = alacritty

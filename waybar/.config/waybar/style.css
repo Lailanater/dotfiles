@@ -8,9 +8,6 @@ window#waybar {
     background-color: transparent;
 }
 
-@define-color bg @color0;
-@define-color txt @color7;
-
 #clock,
 #cpu,
 #gamemode,
@@ -21,9 +18,9 @@ window#waybar {
 #tray {
     border-radius: 9999px;
     padding: 0 13px;
-    background-color: @bg;
-    color: @txt;
-    border: 2px solid @txt;
+    background-color: @background;
+    color: @color7;
+    border: 2px solid @color7;
     opacity: .9;
 }
 
@@ -38,12 +35,12 @@ window#waybar.empty #window {
 }
 
 #workspaces button {
-    color: @txt;
+    color: @color7;
 }
 
 #workspaces button.active {
-    background-color: @txt;
-    color: @bg;
+    background-color: @color7;
+    color: @background;
     border-radius: 9999px;
 }
 
