@@ -30,3 +30,6 @@ wal -q -i "$wallpaper"
 
 # Set Firefox theme colors via pywal
 pywalfox update
+
+# Set Vencord theme from via pywal
+cp ~/.cache/wal/discord-wal.theme.css ~/.config/vesktop/themes
