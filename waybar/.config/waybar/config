@@ -19,7 +19,8 @@
 	"format-muted": "{desc} | 󰖁",
         "on-click": "sh ~/.config/waybar/scripts/toggle_mute_sink_volume.sh",
         "on-click-right": "pavucontrol -t 3",
-	"tooltip": false
+	"tooltip": false,
+	"ignored-sinks": ["Easy Effects Sink"]
     },
     "pulseaudio#mic": {
         "format": "{source_desc} | {format_source}",
