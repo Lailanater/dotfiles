@@ -9,13 +9,13 @@ sudo pacman -S stow
 
 ## Quickstart
 ```shell
-cd $HOME && git clone git@github.com:Lailanater/dotfiles.git && cd dotfiles && sh stow.sh
+cd $HOME && git clone https://github.com/Lailanater/dotfiles.git && cd dotfiles && sh stow.sh
 ```
 
 ## Installing
 #### Clone into your `$HOME` directory or `~`
 ```shell
-cd $HOME && git clone git@github.com:Lailanater/dotfiles.git
+cd $HOME && git clone https://github.com/Lailanater/dotfiles.git
 ```
 
 ## Usage
