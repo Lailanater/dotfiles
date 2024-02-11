@@ -6,3 +6,5 @@ easyeffects --gapplication-service
 
 # Refresh waybar
 sh ~/.config/waybar/scripts/restart-waybar.sh
+
+notify-send "Audio restarted!"
