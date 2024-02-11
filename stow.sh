@@ -1,8 +1,6 @@
 # Stow all directories in this repo
 stow */
 
-# Ensure that the steam folder is created
-mkdir -p ~/.steam/steam
-# Cannot stow steam_dev.cfg so the work around is to just copy
+# Cannot stow steam_dev.cfg so the work around is to just symlink
 # This fixes slow steam download speed on linux
-cp ./steam/steam_dev.cfg ~/.steam/steam
+ln -s -f ~/dotfiles/steam/steam_dev.cfg ~/.steam/steam/steam_dev.cfg
