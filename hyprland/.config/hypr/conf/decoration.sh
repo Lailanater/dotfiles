@@ -17,4 +17,6 @@ decoration {
     inactive_opacity = .9
     active_opacity = 1
     fullscreen_opacity = 1
+
+    dim_special = .5
 }
