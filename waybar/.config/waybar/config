@@ -12,17 +12,24 @@
     	"modules": ["pulseaudio#audio", "pulseaudio#mic"]
     },
     "pulseaudio#audio": {
-        "format": "{volume}% {icon}",
+        "format": "{desc} | {volume}% {icon}",
         "format-icons": {
             "default": ["", "", ""]
         },
-        "on-click": "pavucontrol"
+	"format-muted": "{desc} | 󰖁",
+        "on-click": "sh ~/.config/waybar/scripts/toggle_mute_sink_volume.sh",
+        "on-click-right": "pavucontrol -t 3",
+	"tooltip": false
     },
     "pulseaudio#mic": {
-        "format": "{format_source}",
+        "format": "{source_desc} | {format_source}",
         "format-source": "{volume}% ",
         "format-source-muted": "",
-        "on-click": "pavucontrol"
+        "on-click": "sh ~/.config/waybar/scripts/toggle_mute_source_volume.sh",
+        "on-scroll-up": "sh ~/.config/waybar/scripts/increment_source_volume.sh",
+        "on-scroll-down": "sh ~/.config/waybar/scripts/decrement_source_volume.sh",
+        "on-click-right": "pavucontrol -t 4",
+	"tooltip": false
     },
     "network": {
         "format-wifi": "{signalStrength}% ",
