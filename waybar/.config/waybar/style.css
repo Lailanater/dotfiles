@@ -8,6 +8,12 @@ window#waybar {
     background-color: transparent;
 }
 
+window#waybar.fullscreen #window {
+    background-color: @color5;
+    color: @background;
+    border-color: @background;
+}
+
 #clock,
 #cpu,
 #gamemode,
