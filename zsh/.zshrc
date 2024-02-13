@@ -6,7 +6,4 @@ export ZSH_AUTOSUGGEST_STRATEGY=(history completion)
 autoload -Uz compinit
 compinit
 
-# Use last wallpaper color theme from cache quietly
-wal -R -q
-
 eval "$(starship init zsh)"
