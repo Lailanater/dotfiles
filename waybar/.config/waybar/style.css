@@ -21,6 +21,7 @@ window#waybar.fullscreen #window {
 #pulseaudio,
 #window,
 #workspaces,
+#custom-logout,
 #tray {
     border-radius: 9999px;
     padding: 0 13px;
@@ -28,6 +29,10 @@ window#waybar.fullscreen #window {
     color: @color7;
     border: 2px solid @color7;
     opacity: .9;
+}
+
+#custom-logout {
+  min-width: 13px;
 }
 
 /* make window module transparent when no windows present */

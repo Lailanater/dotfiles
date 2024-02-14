@@ -5,7 +5,7 @@
     "layer": "top",
     "modules-left": ["clock#date", "hyprland/window"],
     "modules-center": ["hyprland/workspaces"],
-    "modules-right": ["gamemode", "group/audio", "network", "cpu", "clock#time", "tray"],
+    "modules-right": ["gamemode", "group/audio", "network", "cpu", "clock#time", "tray", "custom/logout"],
     // Modules configuration
     "group/audio": {
 	"orientation": "horizontal",
@@ -69,5 +69,9 @@
 	    "tidal-hifi": "Tidal"
 	  }
 	},
+    "custom/logout": {
+      "on-click": "wlogout",
+      "format": "󰐥"
+    },
 }
 
