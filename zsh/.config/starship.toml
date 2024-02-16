@@ -1,6 +1,6 @@
 [os]
 disabled = false
-format = " $symbol [$type]($style) "
+format = " $symbol [$name]($style) "
 
 [os.symbols]
 Arch = '󰣇'
