@@ -1,15 +1,16 @@
 # Example binds, see https://wiki.hyprland.org/Configuring/Binds/ for more
 bind = $mainMod, Q, exec, $terminal
-bind = $mainMod, C, killactive, 
+bind = $mainMod, C, killactive,
 bind = $mainMod, E, exec, $fileManager
-bind = $mainMod, T, togglefloating, 
+bind = $mainMod, T, togglefloating,
 bind = $mainMod, Space, exec, $menu
 bind = $mainMod SHIFT, Space, exec, rofi -modi emoji -show emoji
 bind = $mainMod, P, exec, 1password
 bind = $mainMod SHIFT, P, pseudo, # dwindle
-bind = $mainMod, J, togglesplit, # dwindle
+bind = $mainMod, J, togglesplit,  # dwindle
 bind = $mainMod, O, exec, /usr/bin/octopi
 bind = $mainMod, B, exec, firefox
+bind = $mainMod SHIFT, B, exec, google-chrome-stable
 bind = $mainMod, W, exec, sh $refreshThemePath && sh $restartWaybarPath && sh $refreshMakoPath
 bind = $mainMod SHIFT, W, exec, sh $restartWaybarPath
 bind = $mainMod, G, exec, steam

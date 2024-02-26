@@ -4,3 +4,4 @@ windowrulev2 = stayfocused, title: ^()$, class:^(steam)$
 
 # Must use "borderless" in game
 windowrulev2 = fullscreen, class: ^(league of legends\.exe)$, title:^(League of Legends \(TM\) Client)$
+windowrulev2 = stayfocused, class: ^(steam_proton)$, title:^(Assassin’s Creed® Odyssey)$

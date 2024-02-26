@@ -1,2 +1,2 @@
-alias update="sudo pacman -Syu"
+alias update="paru -Syu"
 alias ls="exa --long"
