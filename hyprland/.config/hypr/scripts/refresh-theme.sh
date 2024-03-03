@@ -2,9 +2,9 @@
 
 # Function to get a random element from an array
 random_element() {
-  local array=("$@")
-  local index=$(($RANDOM % ${#array[@]}))
-  echo "${array[$index]}"
+	local array=("$@")
+	local index=$(($RANDOM % ${#array[@]}))
+	echo "${array[$index]}"
 }
 
 # Transition and position options
@@ -26,4 +26,4 @@ wal -q -s -t -e -i "$wallpaper_dir"
 source ~/.cache/wal/colors.sh
 
 # Set wallpaper via swww
-swww img "$wallpaper" --transition-fps  165 --transition-type "$selected_transition" --transition-pos "$selected_position" --transition-angle "$selected_angle"
+swww img "$wallpaper" --transition-fps 165 --transition-type "$selected_transition" --transition-pos "$selected_position" --transition-angle "$selected_angle"

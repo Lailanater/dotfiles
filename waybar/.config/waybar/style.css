@@ -1,17 +1,18 @@
-@import '../../.cache/wal/colors-waybar.css';
+@import "../../.cache/wal/colors-waybar.css";
 
 * {
-    font-family: FontAwesome, Roboto, Helvetica, Arial, sans-serif;
+  font-family: FontAwesome, Roboto, Helvetica, Arial, sans-serif;
+  font-size: 16px;
 }
 
 window#waybar {
-    background-color: transparent;
+  background-color: transparent;
 }
 
 window#waybar.fullscreen #window {
-    background-color: @color5;
-    color: @background;
-    border-color: @background;
+  background-color: @color5;
+  color: @background;
+  border-color: @background;
 }
 
 #clock,
@@ -23,12 +24,12 @@ window#waybar.fullscreen #window {
 #workspaces,
 #custom-logout,
 #tray {
-    border-radius: 9999px;
-    padding: 0 13px;
-    background-color: @background;
-    color: @color7;
-    border: 2px solid @color7;
-    opacity: .9;
+  border-radius: 9999px;
+  padding: 0 13px;
+  background-color: @background;
+  color: @color7;
+  border: 2px solid @color7;
+  opacity: 0.9;
 }
 
 #custom-logout {
@@ -37,25 +38,26 @@ window#waybar.fullscreen #window {
 
 /* make window module transparent when no windows present */
 window#waybar.empty #window {
-    background-color: transparent;
-    border: none;
+  background-color: transparent;
+  border: none;
 }
 
 #workspaces {
-    padding: 2px;
+  padding: 2px;
 }
 
 #workspaces button {
-    color: @color7;
+  color: @color7;
+  min-width: 18px;
 }
 
 #workspaces button.active {
-    background-color: @color7;
-    color: @background;
-    border-radius: 9999px;
+  background-color: @color7;
+  color: @background;
+  border-radius: 9999px;
 }
 
 #clock {
-    /* jank needed to center the text */
-    padding-top: 3px;
+  /* jank needed to center the text */
+  padding-top: 3px;
 }
