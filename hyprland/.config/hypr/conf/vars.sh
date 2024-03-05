@@ -3,7 +3,7 @@ source = ~/.cache/wal/colors-hyprland.conf
 $mainMod = SUPER
 
 $terminal = alacritty
-$fileManager = thunar
+$fileManager = dolphin
 $menu = rofi -show drun
 
 $refreshThemePath = ~/.config/hypr/scripts/refresh-theme.sh
