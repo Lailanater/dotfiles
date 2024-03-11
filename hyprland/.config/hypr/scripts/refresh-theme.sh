@@ -20,7 +20,7 @@ selected_angle=$((RANDOM % 360))
 wallpaper_dir="$HOME/.config/hypr/wallpapers"
 
 # Set select random wallpaper and set general theme colors via pywal
-wal -q -s -t -e -i "$wallpaper_dir"
+wal -s -t -e -i "$wallpaper_dir"
 
 # Import generated vars from above
 source ~/.cache/wal/colors.sh

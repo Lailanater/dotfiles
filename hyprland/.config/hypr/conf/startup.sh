@@ -7,3 +7,4 @@ exec-once = easyeffects --gapplication-service
 exec-once = mako
 exec-once = swww init && sh $refreshThemePath && sh $restartWaybarPath && sh $refreshMakoPath
 exec-once = 1password --silent
+exec-once = corectrl --minimize-systray
