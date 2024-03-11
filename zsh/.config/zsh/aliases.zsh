@@ -1,4 +1,6 @@
 alias update="sudo zypper dup"
 alias ls="eza --long"
 alias reboot="systemctl reboot"
+alias restart="reboot"
 alias poweroff="systemctl poweroff"
+alias shutdown="poweroff"
