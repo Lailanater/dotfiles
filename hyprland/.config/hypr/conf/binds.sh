@@ -17,8 +17,8 @@ bind = $mainMod, G, exec, steam
 bind = $mainMod, D, exec, flatpak run dev.vencord.Vesktop
 bind = $mainMod, F, fullscreen, 1
 bind = $mainMod SHIFT, F, fullscreen, 0
-bind = $mainMod, M, exec, tidal-hifi
-bind = $mainMod, H, exec, heroic
+bind = $mainMod, M, exec, flatpak run com.mastermindzh.tidal-hifi
+bind = $mainMod, H, exec, flatpak run com.heroicgameslauncher.hgl
 bind = $mainMod, A, exec, pavucontrol
 bind = $mainMod SHIFT, A, exec, sh ~/.config/hypr/scripts/restart-audio.sh
 
