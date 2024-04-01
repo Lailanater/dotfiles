@@ -1,0 +1,63 @@
+set exrc
+set number relativenumber
+set tabstop=4 softtabstop=4
+set shiftwidth=4
+set expandtab
+set smartindent
+set nohlsearch
+set hidden
+set noerrorbells
+set nowrap
+set smartcase
+set noswapfile
+set nobackup
+set undodir=~/.vim/undodir
+set undofile
+set incsearch
+set scrolloff=8
+set colorcolumn=100
+set signcolumn=yes
+set NERDTree
+set matchit
+
+let mapleader = " "
+
+" Toggle Relative Line Numbers
+nnoremap <silent> <leader>uL :set relativenumber!<CR>
+
+nmap <leader>n :NERDTree<enter>
+" -------------Navigation Shortcuts-------------
+" Change window left
+nmap <leader>wh <C-w>h
+
+" Change window right
+nmap <leader>wl <C-w>l
+
+" Change window down
+nmap <leader>wj <C-w>j
+
+    " Change window up
+nmap <leader>wk <C-w>k
+
+" gd is 'Go to definition'
+" gb is 'Go back' command (Ctrl + O)
+nmap gb <C-O>
+
+nmap J <C-d>
+nmap K <C-u>
+
+" ---------------Intellij Shortcuts---------------
+nmap <leader>rf <action>(RefactoringMenu)
+nmap <leader>rn <action>(RenameElement)
+nmap <leader>q <action>(QuickActions)
+nmap <leader>t <action>(ActivateTerminalToolWindow)
+nmap <leader>rt <action>(RunClass)
+nmap <leader>st <action>(Stop)
+nmap <leader>m <action>(HideActiveWindow)
+nmap <leader>l <action>(OptimizeImports)<action>(ReformatCode)
+nmap <leader>o <action>(OptimizeImports)
+nmap <leader>ej <action>(GotoNextError)
+nmap <leader>ek <action>(GotoPreviousError)
+nmap <leader>sd <action>(QuickJavaDoc)
+nmap gi <action>(GoToImplementation)
+map <M-j> <action>(SelectNextOccurrence)
