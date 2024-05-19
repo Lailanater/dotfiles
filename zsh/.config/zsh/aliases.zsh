@@ -8,3 +8,5 @@ alias poweroff="systemctl poweroff"
 alias shutdown="poweroff"
 
 alias neofetch="neofetch --ascii_distro openSUSE"
+
+alias vim="nvim"
