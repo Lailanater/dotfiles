@@ -1,6 +1,6 @@
 [Desktop Entry]
 Exec=/home/clail/.config/autostart/latest_kernel_noti.sh
-Icon=application-x-desktop
-Name=latest_kernel_noti.sh
+Icon=application-x-shellscript
+Name=latest_kernel_noti.sh_1_
 Type=Application
 X-KDE-AutostartScript=true

@@ -1,3 +1,4 @@
+#!/bin/bash
 # This script is currently known to work on OpenSUSE with TKG compiled kernel naming convention
 
 latest_kernel_version=$(curl -s https://www.kernel.org/releases.json | jq -r '.latest_stable.version')
