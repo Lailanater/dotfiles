@@ -8,5 +8,6 @@ alias poweroff="systemctl poweroff"
 alias shutdown="poweroff"
 
 alias neofetch="fastfetch"
+alias ff="fastfetch"
 
 alias vim="nvim"
