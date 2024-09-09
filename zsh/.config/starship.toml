@@ -1,9 +1,10 @@
 [os]
 disabled = false
-format = " $symbol [$name]($style) "
+format = " [$symbol](green) [$name]($style) "
 
 [os.symbols]
 Arch = '󰣇'
+openSUSE = ' '
 
 [directory]
 truncation_length = 8
