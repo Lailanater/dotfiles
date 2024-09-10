@@ -11,3 +11,5 @@ alias neofetch="fastfetch"
 alias ff="fastfetch"
 
 alias vim="nvim"
+
+alias lg="lazygit"
