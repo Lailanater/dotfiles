@@ -1,32 +1,27 @@
-- 1.1.11
+- 1.1.13
 - _NAME: PRO X Wireless
   _absent: [hi-res-scroll, lowres-scroll-mode, hires-smooth-invert, hires-smooth-resolution, hires-scroll-mode, scroll-ratchet, smart-shift, thumb-scroll-invert,
-    thumb-scroll-mode, report_rate_extended, pointer_speed, speed-change, backlight, backlight_level, backlight_duration_hands_out, backlight_duration_hands_in,
-    backlight_duration_powered, backlight-timed, fn-swap, reprogrammable-keys, persistent-remappable-keys, divert-keys, disable-keyboard-keys, crown-smooth,
-    divert-crown, divert-gkeys, m-key-leds, mr-key-led, multiplatform, change-host, gesture2-gestures, gesture2-divert, gesture2-params, sidetone, equalizer,
-    adc_power_management]
-  _battery: 0x1004
+    thumb-scroll-mode, report_rate_extended, pointer_speed, dpi_extended, speed-change, backlight, backlight_level, backlight_duration_hands_out, backlight_duration_hands_in,
+    backlight_duration_powered, backlight-timed, rgb_control, rgb_zone_, brightness_control, per-key-lighting, fn-swap, reprogrammable-keys, persistent-remappable-keys,
+    divert-keys, disable-keyboard-keys, crown-smooth, divert-crown, divert-gkeys, m-key-leds, mr-key-led, multiplatform, change-host, gesture2-gestures,
+    gesture2-divert, gesture2-params, sidetone, equalizer, adc_power_management]
+  _battery: 4100
   _modelId: 4093C0940000
-  _sensitive: {dpi: false}
+  _sensitive: {dpi: false, onboard_profiles: false, report_rate: false}
   _serial: CDBCAAC1
   _unitId: CDBCAAC1
   _wpid: '4093'
-  dpi: 0x640
-  onboard_profiles: 0x1
-  report_rate: 0x1
-- _NAME: LIFT VERTICAL ERGONOMIC MOUSE
-  _absent: [hi-res-scroll, hires-smooth-invert, hires-smooth-resolution, hires-scroll-mode, scroll-ratchet, smart-shift, thumb-scroll-invert, thumb-scroll-mode,
-    onboard_profiles, report_rate, report_rate_extended, pointer_speed, speed-change, backlight, backlight_level, backlight_duration_hands_out, backlight_duration_hands_in,
-    backlight_duration_powered, backlight-timed, led_control, led_zone_, fn-swap, persistent-remappable-keys, disable-keyboard-keys, crown-smooth, divert-crown,
-    divert-gkeys, m-key-leds, mr-key-led, multiplatform, gesture2-gestures, gesture2-divert, gesture2-params, sidetone, equalizer, adc_power_management]
-  _battery: 0x1004
+  dpi: 2100
+  onboard_profiles: 2
+  report_rate: 1
+- _NAME: LIFT
   _modelId: B03100000000
   _sensitive: {dpi: false, hires-scroll-mode: ignore, hires-smooth-invert: ignore, hires-smooth-resolution: ignore}
   _serial: C35C2D72
   _unitId: C35C2D72
   _wpid: B031
   change-host: null
-  divert-keys: {0x52: 0x0, 0x53: 0x0, 0x56: 0x0, 0xfd: 0x0}
-  dpi: 0x640
+  divert-keys: {82: 0, 83: 0, 86: 0, 253: 0}
+  dpi: 1600
   lowres-scroll-mode: false
-  reprogrammable-keys: {0x52: 0x52, 0x53: 0x53, 0x56: 0x56, 0xfd: 0xfd}
+  reprogrammable-keys: {82: 82, 83: 83, 86: 86, 253: 253}
