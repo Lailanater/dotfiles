@@ -1,11 +1,19 @@
-alias update="sudo zypper dup && printf '\nUpdating Flatpak...\n------------------------------\n' && flatpak update"
+#!/bin/zsh
 
-alias ls="eza --long"
+source ~/.config/zsh/common-functions.zsh
 
-alias reboot="systemctl reboot"
-alias restart="reboot"
-alias poweroff="systemctl poweroff"
-alias shutdown="poweroff"
+if command_exists eza; then
+  alias ls="eza --long"
+else
+  echo "Warning: eza not installed!"
+fi
+
+if command_exists systemctl; then
+  alias reboot="systemctl reboot"
+  alias restart="reboot"
+  alias poweroff="systemctl poweroff"
+  alias shutdown="poweroff"
+fi
 
 alias neofetch="fastfetch"
 alias ff="fastfetch"
