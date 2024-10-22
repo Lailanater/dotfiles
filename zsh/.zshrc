@@ -1,3 +1,7 @@
+if [ -f /home/linuxbrew/.linuxbrew/bin/brew ]; then
+  eval "$(/home/linuxbrew/.linuxbrew/bin/brew shellenv)"
+fi
+
 source ~/.config/zsh/plugins.zsh
 source ~/.config/zsh/aliases.zsh
 source ~/.config/zsh/autocomplete.zsh

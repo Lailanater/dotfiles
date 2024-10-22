@@ -5,7 +5,7 @@ command_exists() {
 }
 
 is_steam_deck() {
-  if grep -q "Steam Deck" /proc/cpuinfo; then
+  if [ -f /etc/os-release ] && cat /etc/os-release | grep -q "ID=steamos"; then
     return 0
   fi
 
