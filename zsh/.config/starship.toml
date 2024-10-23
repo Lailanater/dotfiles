@@ -3,8 +3,9 @@ disabled = false
 format = " [$symbol](green) [$name]($style) "
 
 [os.symbols]
-Arch = '󰣇'
+Arch = '󰣇 '
 openSUSE = ' '
+Macos = ' '
 
 [directory]
 truncation_length = 8
