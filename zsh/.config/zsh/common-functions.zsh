@@ -22,8 +22,12 @@ update() {
 
   # Flatpak update
   if command_exists flatpak; then
-    # Use -y option if it's a Steam Deck
-    flatpak ${is_steam_deck:+-y} update
+    local flatpak_options=""
+    if is_steam_deck; then
+      flatpak_options="-y"
+    fi
+
+    flatpak $flatpak_options update
   fi
 
   # Homebrew update (might have both package manager and homebrew installed)
