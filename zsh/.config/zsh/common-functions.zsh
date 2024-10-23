@@ -32,7 +32,7 @@ update() {
 
   # Homebrew update (might have both package manager and homebrew installed)
   if command_exists brew; then
-    brew update
+    brew update && brew upgrade
   fi
 }
 
