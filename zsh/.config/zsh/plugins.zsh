@@ -11,7 +11,7 @@ try_source() {
   fi
 }
 
-if command_exists brew && ("$(uname)" != "Linux" || is_steam_deck); then
+if command_exists brew && { [ "$(uname)" != "Linux" ] || is_steam_deck; }; then
   brew_prefix=$(brew --prefix)
   try_source $brew_prefix/share/zsh-autosuggestions/zsh-autosuggestions.zsh
   try_source $brew_prefix/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
