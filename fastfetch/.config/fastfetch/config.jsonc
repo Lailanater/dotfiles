@@ -31,10 +31,4 @@
     "break",
     "colors",
   ],
-  "logo": {
-    "source": "suse",
-    "padding": {
-      "top": 2,
-    },
-  },
 }
