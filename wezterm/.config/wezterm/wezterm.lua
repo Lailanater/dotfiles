@@ -11,6 +11,7 @@ return {
 	-- Font settings
 	font = wezterm.font("JetBrainsMono Nerd Font", { weight = "Regular" }),
 	font_size = 14,
+	harfbuzz_features = { "calt=0", "clig=0", "liga=0" },
 
 	color_scheme = "Catppuccin Mocha",
 }
