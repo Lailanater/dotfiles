@@ -23,3 +23,6 @@ elif command_exists pacman && ! is_steam_deck; then
   try_source /usr/share/zsh/plugins/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
 fi
 
+if command_exists op && command_exists aws; then
+  try_source ~/.config/op/plugins.sh
+fi
