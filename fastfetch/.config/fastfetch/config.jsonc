@@ -1,34 +1,115 @@
 {
   "$schema": "https://github.com/fastfetch-cli/fastfetch/raw/dev/doc/json_schema.json",
+  "display": {
+    "separator": " \uDB86\uDDB0 "
+  },
   "modules": [
-    "title",
-    "separator",
-    "os",
-    "host",
-    "kernel",
-    "uptime",
-    "packages",
-    "shell",
-    "display",
-    "de",
-    "wm",
-    "wmtheme",
-    "theme",
-    "icons",
-    "font",
-    "cursor",
-    "terminal",
-    "terminalfont",
-    "cpu",
-    "gpu",
-    "memory",
-    "swap",
-    "disk",
-    "localip",
-    "battery",
-    "poweradapter",
-    "locale",
+    {
+      "type": "custom",
+      "format": "                \u001b[90m  \u001b[31m  \u001b[32m  \u001b[33m  \u001b[34m  \u001b[35m  \u001b[36m  \u001b[37m "
+    },
+    {
+      "type": "custom",
+      "format": "┌───────────────────── Hardware ─────────────────────┐",
+      "outputColor": "black"
+    },
+    {
+      "type": "host",
+      "key": "\uDB80\uDDC5 PC",
+      "keyColor": "red"
+    },
     "break",
-    "colors",
-  ],
+    {
+      "type": "cpu",
+      "key": "├──\uF4BC  CPU",
+      "keyColor": "red",
+      "format": "{name} - {cores-physical}C/{cores-logical}T @ {freq-max}"
+    },
+    {
+      "type": "gpu",
+      "keyColor": "red",
+      "key": "├──\uDB82\uDCAE  GPU",
+      "format": "{name}"
+    },
+    {
+      "type": "memory",
+      "keyColor": "red",
+      "key": "├──\uF4BC  RAM",
+      "format": "{used} / {total} {percentage-bar}"
+    },
+    "break",
+    {
+      "type": "disk",
+      "keyColor": "red",
+      "key": "├──\uDB81\uDC79  {name}"
+    },
+    "break",
+    {
+      "type": "display",
+      "keyColor": "red",
+      "key": "├──\uDB80\uDF79 ",
+      "format": "{name}\t{inch}\" @ {height}p {refresh-rate}Hz"
+    },
+    {
+      "type": "custom",
+      "format": "└────────────────────────────────────────────────────┘",
+      "outputColor": "black"
+    },
+    "break",
+
+    {
+      "type": "custom",
+      "format": "┌──────────────────────Software──────────────────────┐",
+      "outputColor": "black"
+    },
+    {
+      "type": "os",
+      "key": "\uF17C OS",
+      "format": "{pretty-name}",
+      "keyColor": "blue"
+    },
+    "break",
+    {
+      "type": "kernel",
+      "key": "├──\uF4BC  Kernel",
+      "keyColor": "blue"
+    },
+    {
+      "type": "shell",
+      "key": "├──\uEA85  Shell",
+      "format": "{pretty-name} - {version}",
+      "keyColor": "blue"
+    },
+    {
+      "type": "packages",
+      "key": "├──\uDB80\uDFD6  Packages",
+      "keyColor": "blue"
+    },
+    "break",
+    {
+      "type": "de",
+      "key": "├──\uF299  DE",
+      "format": "{pretty-name} - {version}",
+      "keyColor": "blue"
+    },
+    {
+      "type": "wm",
+      "key": "├──\uDB84\uDDDB  WM",
+      "keyColor": "blue"
+    },
+    {
+      "type": "wmtheme",
+      "key": "├──\uDB81\uDD0E  Theme",
+      "keyColor": "blue"
+    },
+    {
+      "type": "custom",
+      "format": "└────────────────────────────────────────────────────┘",
+      "outputColor": "black"
+    },
+    {
+      "type": "custom",
+      "format": "                \u001b[90m  \u001b[31m  \u001b[32m  \u001b[33m  \u001b[34m  \u001b[35m  \u001b[36m  \u001b[37m "
+    }
+  ]
 }
