@@ -86,6 +86,11 @@
       "keyColor": "blue",
     },
     {
+      "type": "vulkan",
+      "key": "├──\uDB82\uDCAE  Vulkan",
+      "keyColor": "blue",
+    },
+    {
       "type": "packages",
       "key": "├──\uDB80\uDFD6  Packages",
       "keyColor": "blue",
