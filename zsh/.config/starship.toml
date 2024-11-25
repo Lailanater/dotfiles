@@ -6,6 +6,7 @@ format = " [$symbol](green) [$name]($style) "
 Arch = '󰣇 '
 openSUSE = ' '
 Macos = ' '
+Fedora = ' '
 
 [directory]
 truncation_length = 8
