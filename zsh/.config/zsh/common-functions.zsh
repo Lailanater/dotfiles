@@ -15,7 +15,7 @@ is_steam_deck() {
 update() {
   # Package manager update
   if command_exists dnf; then
-    sudo dnf update
+    sudo dnf up --refresh
   elif command_exists zypper; then
     sudo zypper dup
   elif command_exists pacman && ! is_steam_deck; then
