@@ -22,6 +22,8 @@ alias vim="nvim"
 
 alias lg="lazygit"
 
+alias pn="pnpm"
+
 if command_exists flatpak && flatpak list | grep -q wezterm; then
   alias wezterm="flatpak run org.wezfurlong.wezterm"
 fi
