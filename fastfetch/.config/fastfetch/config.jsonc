@@ -53,7 +53,7 @@
       "type": "display",
       "keyColor": "red",
       "key": "├──\uDB80\uDF79 ",
-      "format": "{name}\t{inch}\" @ {height}p {refresh-rate}Hz",
+      "format": "{name} {inch}\" @ {height}p {refresh-rate}Hz",
     },
     {
       "type": "custom",
