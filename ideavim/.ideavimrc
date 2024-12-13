@@ -46,6 +46,12 @@ nmap gb <C-O>
 nmap J <C-d>
 nmap K <C-u>
 
+" Paste from system clipboard
+noremap <leader>p \"+p
+" Copy to system clipboard
+noremap <leader>yy \"+yy
+vnoremap <leader>y \"+y
+
 " ---------------Intellij Shortcuts---------------
 nmap <leader>rf <action>(RefactoringMenu)
 nmap <leader>rn <action>(RenameElement)
