@@ -1,0 +1,15 @@
+#!/bin/bash
+stow \
+  autostart \
+  btop \
+  easyeffects \
+  fastfetch \
+  fonts \
+  ghostty \
+  ideavim \
+  mangohud \
+  nvim \
+  solaar \
+  vesktop \
+  wezterm \
+  zsh
