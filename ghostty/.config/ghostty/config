@@ -5,3 +5,5 @@ window-width = 130
 background-opacity = .95
 font-family = "JetBrainsMono Nerd Font"
 title = "Ghostty"
+window-padding-x = 12
+font-feature = -calt
