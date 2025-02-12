@@ -15,7 +15,7 @@ is_steam_deck() {
 update() {
   # Package manager update
   if command_exists dnf; then
-    sudo dnf up --refresh
+    sudo dnf --refresh upgrade
   elif command_exists zypper; then
     sudo zypper dup
   elif command_exists pacman && ! is_steam_deck; then
@@ -38,3 +38,17 @@ update() {
   fi
 }
 
+is_process_running() {
+    if [ -z "$1" ]; then
+        echo "Usage: is_process_running process_name"
+        return 2
+    fi
+
+    local process_name="$1"
+
+    if pgrep -x "$process_name" >/dev/null; then
+        return 0
+    else
+        return 1
+    fi
+}
