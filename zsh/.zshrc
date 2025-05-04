@@ -6,6 +6,8 @@ source ~/.config/zsh/plugins.zsh
 source ~/.config/zsh/aliases.zsh
 source ~/.config/zsh/autocomplete.zsh
 
+export PATH="$HOME/scripts/bin:$PATH"
+
 export VOLTA_HOME="$HOME/.volta"
 export PATH="$VOLTA_HOME/bin:$PATH"
 
