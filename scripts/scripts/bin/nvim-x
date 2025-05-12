@@ -1,5 +1,5 @@
 #!/bin/bash
 
-if ./touch-x $1; then
+if touch-x $1; then
   nvim $1
 fi
