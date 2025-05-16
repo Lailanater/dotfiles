@@ -1,0 +1,4 @@
+#!/bin/bash
+
+sudo dmesg >~/Documents/dmesg.txt
+journalctl --user-unit plasma-kwin_wayland --boot 0 >~/Documents/journalctl-plasma-kwin_wayland.txt
