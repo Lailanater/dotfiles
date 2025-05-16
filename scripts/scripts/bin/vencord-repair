@@ -1,5 +1,11 @@
 #!/bin/sh
 
+killed_discord=false
+
+if pkill Discord; then
+  killed_discord=true
+fi
+
 VENCORD_INSTALL=/tmp/vencord_install.sh
 
 curl -s https://raw.githubusercontent.com/Vendicated/VencordInstaller/main/install.sh -o $VENCORD_INSTALL &&
@@ -8,3 +14,7 @@ curl -s https://raw.githubusercontent.com/Vendicated/VencordInstaller/main/insta
 ~/scripts/expect-repair-vencord $VENCORD_INSTALL
 
 rm $VENCORD_INSTALL
+
+if $killed_discord; then
+  Discord &> /dev/null &
+fi
