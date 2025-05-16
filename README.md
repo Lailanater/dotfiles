@@ -3,7 +3,7 @@
 ## Quickstart
 
 ```shell
-cd $HOME && git clone https://github.com/Lailanater/dotfiles.git && ./dotfiles/stow
+cd $HOME && git clone https://github.com/Lailanater/dotfiles.git && ./dotfiles/run
 ```
 
 ## Installing
@@ -19,7 +19,7 @@ cd $HOME && git clone https://github.com/Lailanater/dotfiles.git
 #### Stowing everything
 
 ```shell
-./stow
+./run
 ```
 
 #### Stowing all directories (without shell script)

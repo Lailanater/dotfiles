@@ -1,0 +1,9 @@
+#!/bin/bash
+
+stow */
+
+shell_name=$(echo $SHELL | awk -F/ '{ print $NF }')
+
+if [ $shell_name == "zsh" ]; then
+  exec $SHELL -c "source ~/.zshrc"
+fi
