@@ -16,5 +16,5 @@ curl -s https://raw.githubusercontent.com/Vendicated/VencordInstaller/main/insta
 rm $VENCORD_INSTALL
 
 if $killed_discord; then
-  Discord &> /dev/null &
+  Discord 2>&1 | logger -t Discord &
 fi
