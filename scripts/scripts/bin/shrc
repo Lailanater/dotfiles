@@ -4,4 +4,6 @@ shell_name=$(echo $SHELL | awk -F/ '{ print $NF }')
 
 if [ $shell_name == "zsh" ]; then
   exec $SHELL -c "source ~/.zshrc"
+elif [ $shell_name == "bash" ]; then
+  exec $SHELL -c "source ~/.bashrc"
 fi
