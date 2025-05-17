@@ -1,0 +1,8 @@
+#!/usr/bin/env sh
+
+filename=$1
+
+touch-x $filename &&
+  echo "#!/usr/bin/env sh" >>$filename &&
+  echo "" >>$filename && echo "" >>$filename &&
+  nvim $filename +$
