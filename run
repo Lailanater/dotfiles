@@ -1,6 +1,6 @@
 #!/usr/bin/env sh
 
-stow -d ~/dotfiles */
+stow -R -d ~/dotfiles */
 
 # Run source shell script
 source ~/dotfiles/scripts/scripts/bin/shrc
