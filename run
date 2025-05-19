@@ -3,4 +3,4 @@
 stow -R -d ~/dotfiles */
 
 # Run source shell script
-source ~/dotfiles/scripts/scripts/bin/shrc
+source ~/dotfiles/bin/.local/bin/shrc

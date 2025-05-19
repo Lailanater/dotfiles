@@ -1,5 +1,0 @@
-#!/usr/bin/env sh
-
-if touch-x $1; then
-  nvim $1
-fi

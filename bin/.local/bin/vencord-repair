@@ -11,7 +11,7 @@ VENCORD_INSTALL=/tmp/vencord_install.sh
 curl -s https://raw.githubusercontent.com/Vendicated/VencordInstaller/main/install.sh -o $VENCORD_INSTALL &&
   chmod +x $VENCORD_INSTALL
 
-~/scripts/expect-repair-vencord $VENCORD_INSTALL
+~/.local/scripts/expect-repair-vencord $VENCORD_INSTALL
 
 rm $VENCORD_INSTALL
 
