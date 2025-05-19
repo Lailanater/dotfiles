@@ -1,4 +1,8 @@
 #!/usr/bin/env sh
 
-sudo dmesg >~/Documents/dmesg.txt
-journalctl --user-unit plasma-kwin_wayland --boot 0 >~/Documents/journalctl-plasma-kwin_wayland.txt
+crash_dir="$HOME/Documents/$(date -I)_kwin_freeze_logs"
+
+mkdir -p $crash_dir
+
+sudo dmesg >$crash_dir/dmesg.txt
+journalctl --user-unit plasma-kwin_wayland --boot 0 >$crash_dir/journalctl-plasma-kwin_wayland.txt
