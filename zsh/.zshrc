@@ -20,3 +20,7 @@ esac
 # pnpm end
 
 eval "$(starship init zsh)"
+
+if [[ -z $TMUX ]]; then
+  tmux new -As main
+fi
