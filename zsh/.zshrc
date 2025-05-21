@@ -5,6 +5,7 @@ fi
 source ~/.config/zsh/plugins.zsh
 source ~/.config/zsh/aliases.zsh
 source ~/.config/zsh/autocomplete.zsh
+source ~/.config/zsh/common-functions.zsh
 
 export PATH="$HOME/.local/bin:$PATH"
 
@@ -21,6 +22,6 @@ esac
 
 eval "$(starship init zsh)"
 
-if [[ -z $TMUX ]]; then
+if [[ -z $TMUX ]] && command_exists tmux; then
   tmux new -As main
 fi
