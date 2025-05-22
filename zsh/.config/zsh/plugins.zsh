@@ -1,6 +1,4 @@
-#!/bin/zsh
-
-source ~/.config/zsh/common-functions.zsh
+#!/usr/bin/env zsh
 
 try_source() {
   local path="$1"

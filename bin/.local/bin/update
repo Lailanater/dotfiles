@@ -1,0 +1,31 @@
+#!/usr/bin/env sh
+
+function update_package_manager() {
+  if command_exists dnf; then
+    sudo dnf --refresh upgrade
+  elif command_exists zypper; then
+    sudo zypper dup
+  elif command_exists pacman && ! is_steam_deck; then
+    sudo pacman -Syu
+  fi
+
+  # Homebrew update (might have both package manager and homebrew installed)
+  if command_exists brew; then
+    brew update && brew upgrade
+  fi
+}
+
+function update_flatpak() {
+  if command_exists flatpak; then
+    local flatpak_options=""
+    if is_steam_deck; then
+      flatpak_options="-y"
+    fi
+
+    flatpak $flatpak_options update
+  fi
+}
+
+update_package_manager
+update_flatpak
+

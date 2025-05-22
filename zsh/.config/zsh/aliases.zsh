@@ -1,6 +1,4 @@
-#!/bin/zsh
-
-source ~/.config/zsh/common-functions.zsh
+#!/usr/bin/env zsh
 
 if command_exists eza; then
   alias ls="eza --long"

@@ -1,0 +1,11 @@
+#!/usr/bin/env sh
+
+function is_steam_deck() {
+  if [ -f /etc/os-release ] && cat /etc/os-release | grep -q "ID=steamos"; then
+    return 0
+  fi
+
+  return 1
+}
+
+is_steam_deck
