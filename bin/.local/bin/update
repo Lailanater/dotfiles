@@ -1,8 +1,25 @@
 #!/usr/bin/env sh
 
+reboot_after_update=false
+
+function ask_reboot_after_update() {
+  echo
+  read -p "Would you like to reboot after all updates complete? [y/N]: " reboot_after_update
+  if [[ $reboot_after_update == 'y' || $reboot_after_update == 'Y' ]]; then
+    reboot_after_update=true
+  else
+    reboot_after_update=false
+  fi
+}
+
 function update_package_manager() {
+  echo "Checking for updates with package manager..."
   if command_exists dnf; then
-    sudo dnf --refresh upgrade
+    if sudo dnf --refresh upgrade; then
+      if sudo dnf -q needs-restarting | grep "Reboot is required"; then
+        ask_reboot_after_update
+      fi
+    fi
   elif command_exists zypper; then
     sudo zypper dup
   elif command_exists pacman && ! is_steam_deck; then
@@ -11,12 +28,14 @@ function update_package_manager() {
 
   # Homebrew update (might have both package manager and homebrew installed)
   if command_exists brew; then
+    printf "\nChecking for updates with homebrew...\n"
     brew update && brew upgrade
   fi
 }
 
 function update_flatpak() {
   if command_exists flatpak; then
+    printf "\nChecking for updates with flatpak...\n"
     local flatpak_options=""
     if is_steam_deck; then
       flatpak_options="-y"
@@ -29,3 +48,9 @@ function update_flatpak() {
 update_package_manager
 update_flatpak
 
+if $reboot_after_update; then
+  reboot_time=10
+
+  printf "\nRebooting after $reboot_time seconds...\n"
+  sleep $reboot_time && reboot
+fi
