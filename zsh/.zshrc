@@ -21,5 +21,7 @@ esac
 eval "$(starship init zsh)"
 
 if [[ -z $TMUX ]] && command_exists tmux; then
+  export OP_SERVICE_ACCOUNT_TOKEN="$OP_SERVICE_ACCOUNT_TOKEN"
+
   tmux new -As main
 fi
