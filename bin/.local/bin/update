@@ -21,7 +21,11 @@ function update_package_manager() {
       fi
     fi
   elif command_exists zypper; then
-    sudo zypper dup
+    if sudo zypper dup; then
+      if sudo zypper needs-rebooting | grep "Reboot is suggested"; then
+        ask_reboot_after_update
+      fi
+    fi
   elif command_exists pacman && ! is_steam_deck; then
     sudo pacman -Syu
   fi
