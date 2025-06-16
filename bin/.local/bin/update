@@ -56,5 +56,5 @@ if $reboot_after_update; then
   reboot_time=10
 
   printf "\nRebooting after $reboot_time seconds...\n"
-  sleep $reboot_time && reboot
+  sleep $reboot_time && sudo systemctl reboot
 fi
