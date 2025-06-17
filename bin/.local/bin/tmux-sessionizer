@@ -1,0 +1,33 @@
+#!/usr/bin/env sh
+
+function create_session() {
+  session_name=$1
+  session_dir=$2
+
+  if ! tmux has-session -t $session_name >/dev/null 2>&1; then
+
+    if [[ -z $session_dir ]]; then
+      tmux new-session -s $session_name -d
+    else
+      if [[ -d $session_dir ]]; then
+        tmux new-session -s $session_name -c $session_dir -d
+      fi
+    fi
+
+  fi
+}
+
+if [[ -z $TMUX ]]; then
+  export OP_SERVICE_ACCOUNT_TOKEN="$OP_SERVICE_ACCOUNT_TOKEN"
+
+  tmux start-server
+
+  create_session main
+  create_session llm ~/dev/local-llm
+  create_session dotfiles ~/dotfiles
+  create_session ansible ~/dev/ansible
+  create_session minecraft ~/services/minecraft
+
+  tmux attach -t main
+fi
+
