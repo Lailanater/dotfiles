@@ -2,9 +2,9 @@ export PATH="$HOME/.local/bin:$PATH"
 export VOLTA_HOME="$HOME/.volta"
 export PATH="$VOLTA_HOME/bin:$PATH"
 
-source ~/.config/zsh/plugins.zsh
-source ~/.config/zsh/aliases.zsh
-source ~/.config/zsh/autocomplete.zsh
+source $HOME/.config/zsh/plugins.zsh
+source $HOME/.config/zsh/aliases.zsh
+source $HOME/.config/zsh/autocomplete.zsh
 
 if [ -f /home/linuxbrew/.linuxbrew/bin/brew ]; then
   eval "$(/home/linuxbrew/.linuxbrew/bin/brew shellenv)"
@@ -20,6 +20,6 @@ esac
 
 eval "$(starship init zsh)"
 
-if command_exists tmux && [[ -f ~/.local/bin/tmux-sessionizer ]]; then
-  ~/.local/bin/tmux-sessionizer
+if command_exists tmux && [[ -f $HOME/.local/bin/tmux-sessionizer ]]; then
+  $HOME/.local/bin/tmux-sessionizer
 fi
