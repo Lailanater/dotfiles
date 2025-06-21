@@ -53,7 +53,7 @@ update_package_manager
 update_flatpak
 
 if $reboot_after_update; then
-  reboot_time=10
+  reboot_time=3
 
   printf "\nRebooting after $reboot_time seconds...\n"
   sleep $reboot_time && sudo systemctl reboot
