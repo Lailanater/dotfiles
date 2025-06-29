@@ -47,7 +47,7 @@ spawn -noecho /tmp/vencord_install.sh
 match_max 100000
 expect -exact "Downloading Installer...\r
 Running with sudo\r
-Please touch the device.\r
+Please touch the FIDO authenticator.\r
 \[?25l\[2K\r\[2mUse the arrow keys to navigate:\[0m \[2m↓\[0m \[2m↑\[0m \[2m→\[0m \[2m←\[0m \r
 \[2K\r\[34m?\[0m What would you like to do? (Press Enter to confirm): \r
 \[2K\r  \[1m▸\[0m \[4mInstall Vencord\[0m\r
@@ -64,7 +64,7 @@ expect -exact "\[J\[2K\r \[J\[2K\r \[1A\[2K\r\[1A\[2K\r\[1A\[2K\r\[
 \[34mINFO \[0m Done!\r
 \[?25l\[2K\r\[2mUse the arrow keys to navigate:\[0m \[2m↓\[0m \[2m↑\[0m \[2m→\[0m \[2m←\[0m \r
 \[2K\r\[34m?\[0m Select Discord install to repair (Press Enter to confirm): \r
-\[2K\r  \[1m▸\[0m \[4mStable - /usr/lib64/discord \[PATCHED\]\[0m\r
+\[2K\r  \[1m▸\[0m \[4mStable - /opt/discord \[PATCHED\]\[0m\r
 \[2K\r    Custom Location\r
 \[J\[2K\r "
 send -- "\r"
