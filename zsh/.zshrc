@@ -2,6 +2,8 @@ export PATH="$HOME/.local/bin:$PATH"
 export VOLTA_HOME="$HOME/.volta"
 export PATH="$VOLTA_HOME/bin:$PATH"
 
+export PATH="$HOME/.local/share/JetBrains/Toolbox/scripts:$PATH"
+
 source $HOME/.config/zsh/plugins.zsh
 source $HOME/.config/zsh/aliases.zsh
 source $HOME/.config/zsh/autocomplete.zsh
