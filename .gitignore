@@ -2,3 +2,4 @@
 *.log
 mako/.config/mako/config
 fonts/**/.uuid
+bin/.local/bin/pyftfeatfreeze
