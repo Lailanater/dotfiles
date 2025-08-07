@@ -29,7 +29,7 @@ if [[ -z $TMUX ]]; then
   create_session minecraft ~/services/minecraft
 
   if [[ "$PWD" == "$HOME" || -z "$PWD" ]]; then
-    exec tmux new-session -A -s main
+    exec tmux attach -t main
   else
     exec tmux new-session -A -c "$PWD" -s "$(basename $PWD)"
   fi
