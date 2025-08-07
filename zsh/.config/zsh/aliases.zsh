@@ -40,6 +40,7 @@ function ssh() {
 
 function exit() {
   if [[ -n "$TMUX" ]]; then
+    clear
     tmux detach -P
   else
     builtin exit "$@"
