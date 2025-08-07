@@ -22,6 +22,9 @@ esac
 
 eval "$(starship init zsh)"
 
-if command_exists tmux && [[ -f $HOME/.local/bin/tmux-sessionizer ]]; then
+if command_exists tmux && \
+  [[ -f $HOME/.local/bin/tmux-sessionizer ]] && \
+  ! (echo "$TERMINAL_EMULATOR" | grep -q "JetBrains"); then
+
   $HOME/.local/bin/tmux-sessionizer
 fi
