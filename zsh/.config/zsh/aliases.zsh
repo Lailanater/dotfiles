@@ -37,12 +37,3 @@ function ssh() {
     command ssh "$@"
   fi
 }
-
-function exit() {
-  if [[ -n "$TMUX" ]]; then
-    clear
-    tmux detach -P
-  else
-    builtin exit "$@"
-  fi
-}
