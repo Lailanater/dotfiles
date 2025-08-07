@@ -29,3 +29,19 @@ alias compose="docker compose"
 if command_exists flatpak && flatpak list | grep -q wezterm; then
   alias wezterm="flatpak run org.wezfurlong.wezterm"
 fi
+
+function ssh() {
+  if [[ -n "$TMUX" ]]; then
+    tmux detach -E "command ssh $@ && exec tmux attach"
+  else
+    command ssh "$@"
+  fi
+}
+
+function exit() {
+  if [[ -n "$TMUX" ]]; then
+    tmux detach -P
+  else
+    builtin exit "$@"
+  fi
+}
