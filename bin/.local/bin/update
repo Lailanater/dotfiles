@@ -27,7 +27,11 @@ function update_package_manager() {
       fi
     fi
   elif command_exists pacman && ! is_steam_deck; then
-    sudo pacman -Syu
+    if command_exists paru; then
+      sudo paru
+    else
+      sudo pacman -Syu
+    fi
   fi
 
   # Homebrew update (might have both package manager and homebrew installed)
