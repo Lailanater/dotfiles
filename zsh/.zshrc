@@ -11,8 +11,8 @@ if [ -f /home/linuxbrew/.linuxbrew/bin/brew ]; then
   eval "$(/home/linuxbrew/.linuxbrew/bin/brew shellenv)"
 fi
 
+source $HOME/.config/sh/aliases.sh
 source $HOME/.config/zsh/plugins.zsh
-source $HOME/.config/zsh/aliases.zsh
 source $HOME/.config/zsh/autocomplete.zsh
 
 # pnpm

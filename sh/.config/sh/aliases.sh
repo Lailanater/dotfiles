@@ -1,7 +1,5 @@
 #!/usr/bin/env zsh
 
-alias sudo='sudo '
-
 if command_exists eza; then
   alias ls="eza --long"
 else
