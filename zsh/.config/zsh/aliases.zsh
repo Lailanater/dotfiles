@@ -9,9 +9,9 @@ else
 fi
 
 if command_exists systemctl; then
-  alias reboot="systemctl reboot"
+  alias reboot="sudo systemctl reboot"
   alias restart="reboot"
-  alias poweroff="systemctl poweroff"
+  alias poweroff="sudo systemctl poweroff"
   alias shutdown="poweroff"
 fi
 
