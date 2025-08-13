@@ -1,0 +1,12 @@
+#!/usr/bin/env sh
+
+sudo rm -rf /var/lib/sbctl
+
+sudo grub-install --target=x86_64-efi --efi-directory=/boot --bootloader-id=GRUB --modules="tpm" --disable-shim-lock
+
+sbctl status
+sudo sbctl create-keys
+sudo sbctl enroll-keys -m
+sbctl status
+
+sudo sh -c "sbctl verify | sed -E 's|^.* (/.+) is not signed$|sbctl sign -s \"\1\"|e'"
