@@ -28,7 +28,7 @@ function update_package_manager() {
     fi
   elif command_exists pacman && ! is_steam_deck; then
     if command_exists paru; then
-      sudo paru
+      paru
     else
       sudo pacman -Syu
     fi
