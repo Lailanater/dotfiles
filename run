@@ -4,3 +4,6 @@ stow -R -d ~/dotfiles */
 
 # Run source shell script
 source ~/dotfiles/bin/.local/bin/shrc
+
+# Symlink gamemode.ini to /etc so that it can enable gpu options
+sudo ln -s ~/dotfiles/gamemode/.config/gamemode.ini /etc/gamemode.ini
