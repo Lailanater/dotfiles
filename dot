@@ -1,10 +1,7 @@
 #!/usr/bin/env sh
 
-cd ~/dotfiles/home
-stow -R -t $HOME */
-
-cd ~/dotfiles/etc
-sudo stow -R -t /etc */
+~/dotfiles/home/dot
+~/dotfiles/etc/dot
 
 # Run source shell script
 source ~/dotfiles/home/bin/.local/bin/shrc

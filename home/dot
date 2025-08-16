@@ -1,0 +1,10 @@
+#!/usr/bin/env sh
+
+## Dirty way to ensure the script is running in the correct folder
+cd ~/dotfiles/home
+
+if [[ -z "$@" ]]; then
+  stow -R -t $HOME */
+else
+  stow -R -t $HOME "$@"
+fi

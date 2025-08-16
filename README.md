@@ -3,7 +3,7 @@
 ## Quickstart
 
 ```shell
-cd $HOME && git clone https://github.com/Lailanater/dotfiles.git && ./dotfiles/run
+git clone https://github.com/Lailanater/dotfiles.git ~/dotfiles && ~/dotfiles/dot
 ```
 
 ## Installing
@@ -11,7 +11,7 @@ cd $HOME && git clone https://github.com/Lailanater/dotfiles.git && ./dotfiles/r
 #### Clone into your `$HOME` directory or `~`
 
 ```shell
-cd $HOME && git clone https://github.com/Lailanater/dotfiles.git
+git clone https://github.com/Lailanater/dotfiles.git ~/dotfiles
 ```
 
 ## Usage
@@ -19,19 +19,13 @@ cd $HOME && git clone https://github.com/Lailanater/dotfiles.git
 #### Stowing everything
 
 ```shell
-./run
-```
-
-#### Stowing all directories (without shell script)
-
-Run `stow` to symlink everything or just select what you want
-
-```shell
-stow */ # Everything (the '/' ignores the README)
+~/dotfiles/dot
 ```
 
 #### Stowing a single directory of settings
 
+**Just my zsh config example**
+
 ```shell
-stow zsh # Just my zsh config
+~/dotfiles/home/dot zsh
 ```

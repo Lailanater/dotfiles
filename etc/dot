@@ -1,0 +1,10 @@
+#!/usr/bin/env sh
+
+## Dirty way to ensure the script is running in the correct folder
+cd ~/dotfiles/etc
+
+if [[ -z "$@" ]]; then
+  sudo stow -R -t /etc */
+else
+  sudo stow -R -t /etc "$@"
+fi
