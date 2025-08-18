@@ -1,7 +1,7 @@
 #!/usr/bin/env sh
 
-~/dotfiles/home/dot
-~/dotfiles/etc/dot
+~/dotfiles/home/dots
+~/dotfiles/etc/dots
 
 # Run source shell script
 source ~/dotfiles/home/bin/.local/bin/shrc

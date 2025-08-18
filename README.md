@@ -3,7 +3,7 @@
 ## Quickstart
 
 ```shell
-git clone https://github.com/Lailanater/dotfiles.git ~/dotfiles && ~/dotfiles/dot
+git clone https://github.com/Lailanater/dotfiles.git ~/dotfiles && ~/dotfiles/dots
 ```
 
 ## Installing
@@ -19,7 +19,7 @@ git clone https://github.com/Lailanater/dotfiles.git ~/dotfiles
 #### Stowing everything
 
 ```shell
-~/dotfiles/dot
+~/dotfiles/dots
 ```
 
 #### Stowing a single directory of settings
@@ -27,5 +27,5 @@ git clone https://github.com/Lailanater/dotfiles.git ~/dotfiles
 **Just my zsh config example**
 
 ```shell
-~/dotfiles/home/dot zsh
+~/dotfiles/home/dots zsh
 ```
