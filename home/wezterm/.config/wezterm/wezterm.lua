@@ -9,7 +9,7 @@ return {
 	window_background_opacity = 0.95,
 
 	-- Font settings
-	font = wezterm.font("Intone Mono Nerd Font"),
+	font = wezterm.font("Monaspace Neon NF"),
 	font_size = 14,
 
 	color_scheme = "Catppuccin Mocha",
