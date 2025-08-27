@@ -27,6 +27,7 @@ eval "$(starship init zsh)"
 
 if command_exists tmux && \
   [[ -f $HOME/.local/bin/tmux-sessionizer ]] && \
+  ! is_steam_deck && \
   ! (echo "$TERMINAL_EMULATOR" | grep -q "JetBrains"); then
 
   $HOME/.local/bin/tmux-sessionizer
