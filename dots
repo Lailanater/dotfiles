@@ -2,6 +2,7 @@
 
 ~/dotfiles/home/dots
 ~/dotfiles/etc/dots
+~/dotfiles/usr/dots
 
 # Run source shell script
 source ~/dotfiles/home/bin/.local/bin/shrc
