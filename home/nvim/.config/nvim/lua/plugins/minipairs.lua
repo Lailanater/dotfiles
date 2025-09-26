@@ -1,6 +1,6 @@
 return {
   {
-    "echasnovski/mini.pairs",
+    "nvim-mini/mini.pairs",
     event = "VeryLazy",
     opts = {},
     keys = {
@@ -18,5 +18,5 @@ return {
         desc = "Toggle auto pairs",
       },
     },
-  }
+  },
 }
