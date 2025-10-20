@@ -1,5 +1,5 @@
 .idea
 *.log
-mako/.config/mako/config
-fonts/**/.uuid
-bin/.local/bin/pyftfeatfreeze
+home/mako/.config/mako/config
+home/fonts/**/.uuid
+home/bin/.local/bin/pyftfeatfreeze
