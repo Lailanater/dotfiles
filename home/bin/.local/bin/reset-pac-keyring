@@ -1,0 +1,11 @@
+#!/usr/bin/env sh
+
+# Commands are from https://wiki.cachyos.org/cachyos_basic/faq/#error-file-is-corrupted-invalid-or-corrupted-package-pgp-signature
+sudo rm -rf /etc/pacman.d/gnupg/
+sudo pacman-key --init
+sudo pacman-key --populate
+
+sudo pacman-key --recv-keys F3B607488DB35A47 --keyserver keyserver.ubuntu.com
+sudo pacman-key --lsign-key F3B607488DB35A47
+
+sudo rm -R /var/lib/pacman/sync
