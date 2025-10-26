@@ -5,4 +5,9 @@ if [[ -n "$TMUX" ]]; then
     clear
     tmux detach -P
   }
+
+  function ssh() {
+    tmux detach -E "ssh \"$@\"; clear && tmux attach"
+  }
 fi
+
