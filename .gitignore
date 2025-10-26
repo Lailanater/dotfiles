@@ -3,3 +3,4 @@
 home/mako/.config/mako/config
 home/fonts/**/.uuid
 home/bin/.local/bin/pyftfeatfreeze
+home/sh/.config/sh/local.sh

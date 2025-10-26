@@ -12,6 +12,11 @@ if [ -f /home/linuxbrew/.linuxbrew/bin/brew ]; then
 fi
 
 source $HOME/.config/sh/aliases.sh
+source $HOME/.config/sh/tmux.sh
+if [[ -f $HOME/.config/sh/local.sh ]]; then
+  source $HOME/.config/sh/local.sh
+fi
+source $HOME/.config/sh/tmux.sh
 source $HOME/.config/zsh/plugins.zsh
 source $HOME/.config/zsh/autocomplete.zsh
 
