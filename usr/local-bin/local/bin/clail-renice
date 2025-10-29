@@ -1,0 +1,49 @@
+#!/usr/bin/env bash
+
+GAME_NAME=$(echo "$@" | awk -F/ '{print $(NF-1)}')
+PROCESS_NAME=$(echo "$@" | awk -F/ '{print $NF}' | awk '{print $1}')
+FILE="$HOME/dev/cachyos/ananicy-rules/00-default/games/wine_proton.rules"
+
+if ! grep -qr "$PROCESS_NAME" /etc/ananicy.d/00-default/games; then
+  STORE_URL="https://store.steampowered.com/app/$SteamAppId"
+
+  if [[ $GAME_NAME == The\ * ]]; then
+    HEADING="The"
+  else
+    # Take the first character and force it to upper‑case
+    FIRST=${GAME_NAME:0:1}
+    HEADING=${FIRST^^}
+  fi
+  if ! grep -q "^### $HEADING ###$" "$FILE"; then
+    HEADING="Non-latin titles"
+  fi
+
+  COMMENT_LINE="# $STORE_URL"
+  JSON_LINE="{ \"name\": \"$PROCESS_NAME\", \"type\": \"Game\" }"
+
+  if ! grep -q "$PROCESS_NAME" /etc/ananicy.d/00-default/games/clail.rules; then
+    echo -e "\n# $GAME_NAME\n$COMMENT_LINE\n$JSON_LINE" >>/etc/ananicy.d/00-default/games/clail.rules
+
+    notify-send --app-name="clail-renice" --expire-time=0 "Added ananicy game rule for $GAME_NAME" "$JSON_LINE"
+    systemctl restart ananicy-cpp.service
+  fi
+
+  if ! grep -q "$PROCESS_NAME" "$FILE"; then
+    awk -i inplace \
+      -v heading="$HEADING" \
+      -v comment="$COMMENT_LINE" \
+      -v json="$JSON_LINE" '
+/^###/ && $0 == ("### " heading " ###") {
+    print
+    print ""
+    print comment
+    print json
+    print ""
+    next
+}
+{ print }
+' "$FILE"
+  fi
+fi
+
+exec "$@"
