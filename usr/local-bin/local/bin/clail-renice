@@ -4,7 +4,7 @@ GAME_NAME=$(echo "$@" | awk -F/ '{print $(NF-1)}')
 PROCESS_NAME=$(echo "$@" | awk -F/ '{print $NF}' | awk '{print $1}')
 FILE="$HOME/dev/cachyos/ananicy-rules/00-default/games/wine_proton.rules"
 
-if ! grep -qr "$PROCESS_NAME" /etc/ananicy.d/00-default/games; then
+if (! grep -qr "$PROCESS_NAME" /etc/ananicy.d/00-default/games) && (! grep -q "$PROCESS_NAME" /etc/ananicy.d/00-default/games/clail-blacklist.txt); then
   STORE_URL="https://store.steampowered.com/app/$SteamAppId"
 
   if [[ $GAME_NAME == The\ * ]]; then
@@ -21,24 +21,32 @@ if ! grep -qr "$PROCESS_NAME" /etc/ananicy.d/00-default/games; then
   COMMENT_LINE="# $STORE_URL"
   JSON_LINE="{ \"name\": \"$PROCESS_NAME\", \"type\": \"Game\" }"
 
+  if [[ ! -f /etc/ananicy.d/00-default/games/clail.rules ]]; then
+    notify-send --urgency=critical --app-name="clail-renice" \
+      "Unable to add new game rule clail.rules does not exist and must be created. Run the following command:" \
+      "sudo touch /etc/ananicy.d/00-default/games/clail.rules && sudo chown $USER:$USER /etc/ananicy.d/00-default/games/clail.rules"
+    exit 1
+  fi
+
   if ! grep -q "$PROCESS_NAME" /etc/ananicy.d/00-default/games/clail.rules; then
     echo -e "\n# $GAME_NAME\n$COMMENT_LINE\n$JSON_LINE" >>/etc/ananicy.d/00-default/games/clail.rules
 
-    notify-send --app-name="clail-renice" --expire-time=0 "Added ananicy game rule for $GAME_NAME" "$JSON_LINE"
+    notify-send --app-name="clail-renice" --expire-time=30000 "Added ananicy game rule for $GAME_NAME $JSON_LINE"
     systemctl restart ananicy-cpp.service
   fi
 
   if ! grep -q "$PROCESS_NAME" "$FILE"; then
     awk -i inplace \
+      -v game="$GAME_NAME" \
       -v heading="$HEADING" \
       -v comment="$COMMENT_LINE" \
       -v json="$JSON_LINE" '
 /^###/ && $0 == ("### " heading " ###") {
     print
     print ""
+    print game
     print comment
     print json
-    print ""
     next
 }
 { print }

@@ -1,0 +1,3 @@
+#!/usr/bin/env sh
+
+PROTON_FSR4_RDNA3_UPGRADE=1 PROTON_USE_NTSYNC=1 exec clail-renice game-performance mangohud "$@"
