@@ -32,7 +32,9 @@ if (! grep -qr "$PROCESS_NAME" /etc/ananicy.d/00-default/games) && (! grep -q "$
     echo -e "\n# $GAME_NAME\n$COMMENT_LINE\n$JSON_LINE" >>/etc/ananicy.d/00-default/games/clail.rules
 
     notify-send --app-name="clail-renice" --expire-time=20000 "Added ananicy game rule for $GAME_NAME" "$JSON_LINE"
-    systemctl restart ananicy-cpp.service
+    if systemctl is-active --quiet ananicy-cpp.service; then
+      systemctl restart ananicy-cpp.service
+    fi
   fi
 
   if ! grep -q "$PROCESS_NAME" "$FILE"; then
@@ -44,7 +46,7 @@ if (! grep -qr "$PROCESS_NAME" /etc/ananicy.d/00-default/games) && (! grep -q "$
 /^###/ && $0 == ("### " heading " ###") {
     print
     print ""
-    print game
+    print "# " game
     print comment
     print json
     next
