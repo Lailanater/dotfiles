@@ -1,0 +1,22 @@
+#!/usr/bin/env sh
+
+function install_cachyos_proton() {
+  OPTIMIZATION=$1
+
+  URL=$(curl -sL https://api.github.com/repos/CachyOS/proton-cachyos/releases/latest |
+    jq -r ".assets[] | select(.name? | match(\"proton-cachyos-.*slr-x86_64_$OPTIMIZATION.tar.xz$\")) | .browser_download_url")
+  ASSET_LOC="/tmp/$(basename $URL)"
+
+  if echo $URL | wget -O "$ASSET_LOC" -qi -; then
+    DEST="$HOME/.steam/steam/compatibilitytools.d/proton-cachyos-slr-$OPTIMIZATION-latest"
+    rm -rf "$DEST"
+    mkdir -p "$DEST"
+
+    tar -xf "$ASSET_LOC" -C "$DEST" --strip-components=1
+
+    rm "$ASSET_LOC"
+  fi
+}
+
+install_cachyos_proton "v4"
+install_cachyos_proton "v3"
