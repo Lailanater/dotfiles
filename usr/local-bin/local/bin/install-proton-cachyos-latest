@@ -1,5 +1,17 @@
 #!/usr/bin/env sh
 
+function set_user_and_home() {
+  if [[ -n $SUDO_USER ]]; then
+    USER="$SUDO_USER"
+  elif [[ -n $LOGNAME ]]; then
+    USER="$LOGNAME"
+  else
+    USER="$(whoami)"
+  fi
+
+  HOME="/home/$USER"
+}
+
 function install_cachyos_proton() {
   OPTIMIZATION=$1
 
@@ -8,11 +20,14 @@ function install_cachyos_proton() {
   ASSET_LOC="/tmp/$(basename $URL)"
 
   if echo $URL | wget -O "$ASSET_LOC" -qi -; then
+    set_user_and_home
     DEST="$HOME/.steam/steam/compatibilitytools.d/proton-cachyos-slr-$OPTIMIZATION-latest"
     rm -rf "$DEST"
     mkdir -p "$DEST"
 
     tar -xf "$ASSET_LOC" -C "$DEST" --strip-components=1
+
+    chown -R "$USER":"$USER" "$DEST"
 
     rm "$ASSET_LOC"
   fi
