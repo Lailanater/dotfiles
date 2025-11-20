@@ -19,6 +19,7 @@ function install_cachyos_proton() {
     jq -r ".assets[] | select(.name? | match(\"proton-cachyos-.*slr-x86_64_$OPTIMIZATION.tar.xz$\")) | .browser_download_url")
   ASSET_LOC="/tmp/$(basename $URL)"
 
+  echo "Downloading $(basename $URL)..."
   if echo $URL | wget -O "$ASSET_LOC" -qi -; then
     set_user_and_home
     DEST="$HOME/.steam/steam/compatibilitytools.d/proton-cachyos-slr-$OPTIMIZATION-latest"
@@ -30,8 +31,11 @@ function install_cachyos_proton() {
     chown -R "$USER":"$USER" "$DEST"
 
     rm "$ASSET_LOC"
+    echo "Installed proton-cachyos-slr-$OPTIMIZATION-latest!"
   fi
 }
 
-install_cachyos_proton "v4"
-install_cachyos_proton "v3"
+install_cachyos_proton "v4" &
+install_cachyos_proton "v3" &
+
+wait
