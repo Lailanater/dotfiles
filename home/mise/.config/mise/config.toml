@@ -1,0 +1,7 @@
+[tools]
+age = "latest"
+fnox = "latest"
+node = "lts"
+pnpm = "latest"
+usage = "latest"
+yarn = "latest"
