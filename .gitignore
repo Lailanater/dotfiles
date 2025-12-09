@@ -3,4 +3,7 @@
 home/mako/.config/mako/config
 home/fonts/**/.uuid
 home/bin/.local/bin/pyftfeatfreeze
+home/bin/.local/bin/pysemgrep
+home/bin/.local/bin/semgrep
+home/bin/.local/bin/webi
 home/sh/.config/sh/local.sh

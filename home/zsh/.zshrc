@@ -5,7 +5,10 @@ eval "$(mise activate zsh)"
 eval "$(fnox activate zsh)"
 
 export PATH="$HOME/.local/share/JetBrains/Toolbox/scripts:$PATH"
+export PATH=$PATH:$HOME/go/bin
 # PATH end
+
+export FNOX_AGE_KEY_FILE=~/.ssh/fnox
 
 if [ -f /home/linuxbrew/.linuxbrew/bin/brew ]; then
   eval "$(/home/linuxbrew/.linuxbrew/bin/brew shellenv)"

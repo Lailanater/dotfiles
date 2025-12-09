@@ -27,6 +27,7 @@ if [[ -z $TMUX ]]; then
   create_session dotfiles ~/dotfiles
   create_session ansible ~/dev/ansible
   create_session minecraft ~/services/minecraft
+  create_session lailcoding ~/dev/lailcoding
 
   if [[ "$PWD" == "$HOME" || -z "$PWD" ]]; then
     exec tmux attach -t main

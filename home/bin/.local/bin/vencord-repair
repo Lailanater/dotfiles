@@ -2,7 +2,7 @@
 
 killed_discord=false
 
-if pkill Discord; then
+if pkill -i discord; then
   killed_discord=true
 fi
 

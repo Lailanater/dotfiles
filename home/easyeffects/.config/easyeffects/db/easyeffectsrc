@@ -1,0 +1,19 @@
+[EffectsPipelines]
+processAllInputs=false
+
+[StreamInputs]
+inputDevice=alsa_input.usb-MOTU_M2_M2AE1AC6VI-00.HiFi__Mic1__source
+visiblePage=pluginsPage
+
+[StreamOutputs]
+mostUsedPresets=DT 1990,Default
+outputDevice=alsa_output.usb-Schiit_Audio_Schiit_Modi_3E-00.analog-stereo
+plugins=equalizer#0
+usedPresets=DT 1990:9,Default:1
+visiblePage=pluginsPage
+visiblePlugin=equalizer#0
+
+[Window]
+height=730
+lastLoadedOutputPreset=DT 1990
+width=1026
