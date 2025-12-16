@@ -4,6 +4,8 @@ Description=Automatically turn your Logitech Litra device on when your webcam tu
 [Service]
 Type=simple
 ExecStart=/usr/local/bin/litra-autotoggle
+Restart=on-failure
+RestartSec=5s
 
 [Install]
-WantedBy=multi-user.target
+WantedBy=default.target
