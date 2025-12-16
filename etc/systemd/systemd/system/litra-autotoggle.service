@@ -1,0 +1,9 @@
+[Unit]
+Description=Automatically turn your Logitech Litra device on when your webcam turns on, and off when your webcam turns off. (https://github.com/timrogers/litra-autotoggle)
+
+[Service]
+Type=simple
+ExecStart=/usr/local/bin/litra-autotoggle
+
+[Install]
+WantedBy=multi-user.target
