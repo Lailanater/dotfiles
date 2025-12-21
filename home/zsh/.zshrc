@@ -6,6 +6,7 @@ eval "$(fnox activate zsh)"
 
 export PATH="$HOME/.local/share/JetBrains/Toolbox/scripts:$PATH"
 export PATH=$PATH:$HOME/go/bin
+export PATH=$PATH:$HOME/.cargo/bin
 # PATH end
 
 export FNOX_AGE_KEY_FILE=~/.ssh/fnox
