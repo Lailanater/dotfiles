@@ -1,15 +1,7 @@
-# PATH
 export PATH="$HOME/.local/bin:$PATH"
-
-eval "$(mise activate zsh)"
-eval "$(fnox activate zsh)"
-
 export PATH="$HOME/.local/share/JetBrains/Toolbox/scripts:$PATH"
 export PATH=$PATH:$HOME/go/bin
 export PATH=$PATH:$HOME/.cargo/bin
-# PATH end
-
-export FNOX_AGE_KEY_FILE=~/.ssh/fnox
 
 if [ -f /home/linuxbrew/.linuxbrew/bin/brew ]; then
   eval "$(/home/linuxbrew/.linuxbrew/bin/brew shellenv)"
@@ -23,6 +15,14 @@ fi
 source $HOME/.config/sh/tmux.sh
 source $HOME/.config/zsh/plugins.zsh
 source $HOME/.config/zsh/autocomplete.zsh
+
+if command_exists mise; then
+  eval "$(mise activate zsh)"
+fi
+if command_exists fnox; then
+  eval "$(fnox activate zsh)"
+  export FNOX_AGE_KEY_FILE=~/.ssh/fnox
+fi
 
 # pnpm
 export PNPM_HOME="$HOME/.local/share/pnpm"
