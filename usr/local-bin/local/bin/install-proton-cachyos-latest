@@ -35,7 +35,18 @@ function install_cachyos_proton() {
   fi
 }
 
+STEAM_RUNNING_ID=$(pgrep -i ^steam$)
+if [[ -n "$STEAM_RUNNING_ID" ]]; then
+  echo "Closing steam..."
+  kill -s TERM "$STEAM_RUNNING_ID"
+fi
+
 install_cachyos_proton "v4" &
 install_cachyos_proton "v3" &
 
 wait
+
+if [[ -n "$STEAM_RUNNING_ID" ]]; then
+  echo "Reopening steam..."
+  steam -silent &>/dev/null &
+fi
