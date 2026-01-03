@@ -5,4 +5,4 @@
 ~/dotfiles/usr/dots
 
 # Run source shell script
-source ~/dotfiles/home/bin/.local/bin/shrc
+source ~/dotfiles/home/bin/dot-local/bin/shrc

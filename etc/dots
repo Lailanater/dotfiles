@@ -4,7 +4,7 @@
 cd ~/dotfiles/etc
 
 if [[ -z "$@" ]]; then
-  sudo stow -R -t /etc */
+  sudo stow --dotfiles --no-folding -R -t /etc */
 else
-  sudo stow -R -t /etc "$@"
+  sudo stow --dotfiles --no-folding -R -t /etc "$@"
 fi

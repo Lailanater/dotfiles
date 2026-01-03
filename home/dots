@@ -4,7 +4,7 @@
 cd ~/dotfiles/home
 
 if [[ -z "$@" ]]; then
-  stow -R -t $HOME */
+  stow --dotfiles --no-folding -R -t $HOME */
 else
-  stow -R -t $HOME "$@"
+  stow --dotfiles --no-folding -R -t $HOME "$@"
 fi
