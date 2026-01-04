@@ -1,17 +1,5 @@
 #!/usr/bin/env sh
 
-function set_user_and_home() {
-  if [[ -n $SUDO_USER ]]; then
-    USER="$SUDO_USER"
-  elif [[ -n $LOGNAME ]]; then
-    USER="$LOGNAME"
-  else
-    USER="$(whoami)"
-  fi
-
-  HOME="/home/$USER"
-}
-
 function install_cachyos_proton() {
   OPTIMIZATION=$1
 
@@ -21,32 +9,20 @@ function install_cachyos_proton() {
 
   echo "Downloading $(basename $URL)..."
   if echo $URL | wget -O "$ASSET_LOC" -qi -; then
-    set_user_and_home
-    DEST="$HOME/.steam/steam/compatibilitytools.d/proton-cachyos-slr-$OPTIMIZATION-latest"
+    DEST="/home/$SUDO_USER/.steam/steam/compatibilitytools.d/proton-cachyos-slr-$OPTIMIZATION-latest"
     rm -rf "$DEST"
     mkdir -p "$DEST"
 
     tar -xf "$ASSET_LOC" -C "$DEST" --strip-components=1
     sed -i -E "s/\"display_name\" \".*\"/\"display_name\" \"proton-cachyos-slr-$OPTIMIZATION-latest\"/" "$DEST/compatibilitytool.vdf"
-    chown -R "$USER":"$USER" "$DEST"
+    chown -R "$SUDO_USER":"$SUDO_USER" "$DEST"
 
     rm "$ASSET_LOC"
     echo "Installed proton-cachyos-slr-$OPTIMIZATION-latest!"
   fi
 }
 
-STEAM_RUNNING_ID=$(pgrep -i ^steam$)
-if [[ -n "$STEAM_RUNNING_ID" ]]; then
-  echo "Closing steam..."
-  kill -s TERM "$STEAM_RUNNING_ID"
-fi
-
 install_cachyos_proton "v4" &
 install_cachyos_proton "v3" &
 
 wait
-
-if [[ -n "$STEAM_RUNNING_ID" ]]; then
-  echo "Reopening steam..."
-  steam -silent &>/dev/null &
-fi

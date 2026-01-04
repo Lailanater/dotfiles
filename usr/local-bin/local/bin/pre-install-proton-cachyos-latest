@@ -1,0 +1,6 @@
+#!/usr/bin/env sh
+
+if [[ -n $(pgrep -i steam) ]]; then
+  echo "Steam is currently running, please close it before updating proton-cachyos-slr"
+  exit 1
+fi
