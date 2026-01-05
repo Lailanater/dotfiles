@@ -1,5 +1,10 @@
 #!/usr/bin/env sh
 
+if [[ -z "$SUDO_USER" ]]; then
+  echo "Please run with sudo."
+  exit 1
+fi
+
 function install_cachyos_proton() {
   OPTIMIZATION=$1
 
@@ -10,7 +15,7 @@ function install_cachyos_proton() {
   echo "Downloading $(basename $URL)..."
   if echo $URL | wget -O "$ASSET_LOC" -qi -; then
     DEST="/home/$SUDO_USER/.steam/steam/compatibilitytools.d/proton-cachyos-slr-$OPTIMIZATION-latest"
-    rm -rf "$DEST"
+    rm -rf "$DEST/*"
     mkdir -p "$DEST"
 
     tar -xf "$ASSET_LOC" -C "$DEST" --strip-components=1
