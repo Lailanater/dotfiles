@@ -1,6 +1,18 @@
 #!/usr/bin/env sh
 
-PROTON_USE_NTSYNC=${PROTON_USE_NTSYNC:-1} \
-  PROTON_XESS_UPGRADE=${PROTON_XESS_UPGRADE:-1} \
-  PROTON_FSR4_RDNA3_UPGRADE=${PROTON_FSR4_RDNA3_UPGRADE:-1} \
+export PROTON_USE_NTSYNC=${PROTON_USE_NTSYNC:-1}
+export PROTON_XESS_UPGRADE=${PROTON_XESS_UPGRADE:-1}
+
+if command -v nvidia-smi &>/dev/null; then
+  export PROTON_DLSS_UPGRADE=${PROTON_DLSS_UPGRADE:-1}
+  export PROTON_NVIDIA_LIBS=${PROTON_NVIDIA_LIBS:-1}
+else
+  # Could do a conditional check with "pacman -Qs amd-ucode &>/dev/null"?
+  export PROTON_FSR4_RDNA3_UPGRADE=${PROTON_FSR4_RDNA3_UPGRADE:-1}
+fi
+
+if command -v lail-renice &>/dev/null; then
   exec lail-renice game-performance mangohud "$@"
+else
+  exec game-performance mangohud "$@"
+fi
