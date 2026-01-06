@@ -19,7 +19,7 @@ function install_cachyos_proton() {
     mkdir -p "$DEST"
 
     tar -xf "$ASSET_LOC" -C "$DEST" --strip-components=1
-    sed -i -E "s/\"display_name\" \".*\"/\"display_name\" \"proton-cachyos-slr-$OPTIMIZATION-latest\"/" "$DEST/compatibilitytool.vdf"
+    sed -i "s/\"proton-cachyos-.*-slr-.*\"/\"proton-cachyos-slr-${OPTIMIZATION}-latest\"/" "$DEST/compatibilitytool.vdf"
     chown -R "$SUDO_USER":"$SUDO_USER" "$DEST"
 
     rm "$ASSET_LOC"
