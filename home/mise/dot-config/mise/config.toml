@@ -2,6 +2,8 @@
 age = "latest"
 fnox = "latest"
 node = "lts"
+pipx = "latest"
 pnpm = "latest"
 python = "latest"
+rust = "latest"
 usage = "latest"
