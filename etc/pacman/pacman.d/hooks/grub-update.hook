@@ -5,7 +5,8 @@ Type = Package
 Target = grub
 
 [Action]
-Description = Regenerate grub if updated
+Description = Regenerate grub and re-sign with sbctl if updated
 When = PostTransaction
 Depends = grub
-Exec = /bin/sh -c "if [[ -d /boot/EFI ]]; then /usr/bin/grub-install --efi-directory=/boot --bootloader-id=GRUB && /usr/bin/grub-mkconfig -o /boot/grub/grub.cfg; else echo 'EFI directory does not appear to be /boot skipping install and rebuild...' ; fi"
+Depends = sbctl
+Exec = /bin/sh -c "if [[ -d /boot/EFI ]]; then /usr/bin/grub-install --target=x86_64-efi --efi-directory=/boot --bootloader-id=GRUB --modules=\"tpm\" --disable-shim-lock && /usr/bin/grub-mkconfig -o /boot/grub/grub.cfg && sbctl sign-all; else echo 'EFI directory does not appear to be /boot skipping install and rebuild...' ; fi"
