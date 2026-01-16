@@ -1,0 +1,11 @@
+[Trigger]
+Operation = Upgrade
+
+Type = Package
+Target = grub
+
+[Action]
+Description = Regenerate grub if updated
+When = PostTransaction
+Depends = grub
+Exec = /bin/sh -c "if [[ -d /boot/EFI ]]; then /usr/bin/grub-install --efi-directory=/boot --bootloader-id=GRUB && /usr/bin/grub-mkconfig -o /boot/grub/grub.cfg; else echo 'EFI directory does not appear to be /boot skipping install and rebuild...' ; fi"
