@@ -1,0 +1,25 @@
+#!/usr/bin/env sh
+
+EFI_LOCATION=$(sudo find /boot -type d -name EFI 2>/dev/null)
+ESP=$(dirname $EFI_LOCATION 2>/dev/null)
+
+GRUB_EFI_LOCATION=$(sudo find /boot -type f -name grubx64.efi 2>/dev/null)
+BOOTLOADER_ID_PATH=$(dirname $GRUB_EFI_LOCATION 2>/dev/null)
+BOOTLOADER_ID=$(basename $BOOTLOADER_ID_PATH 2>/dev/null)
+
+GRUB_INSTALL_CMD="sudo grub-install --target=x86_64-efi --efi-directory=${ESP} --bootloader-id=${BOOTLOADER_ID}"
+if command -v sbctl &>/dev/null; then
+  GRUB_INSTALL_CMD="$GRUB_INSTALL_CMD --modules=\"tpm\" --disable-shim-lock"
+fi
+
+if [[ -n "$ESP" ]] && [[ -n "$BOOTLOADER_ID" ]]; then
+  eval "$GRUB_INSTALL_CMD"
+
+  sudo grub-mkconfig -o /boot/grub/grub.cfg
+
+  if command -v sbctl &>/dev/null; then
+    sudo sbctl sign-all
+  fi
+else
+  echo "Couldn't find ESP and bootloader-id you will have to manually update grub..."
+fi
