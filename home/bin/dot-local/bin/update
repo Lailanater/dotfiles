@@ -57,7 +57,8 @@ function update_mise() {
   if command_exists mise; then
     printf "\nChecking for updates with mise...\n"
     mise self-update -y
-    mise outdated -y
+    mise install -y
+    mise upgrade -y
   fi
 }
 
