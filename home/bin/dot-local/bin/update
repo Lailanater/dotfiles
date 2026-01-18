@@ -53,8 +53,17 @@ function update_flatpak() {
   fi
 }
 
+function update_mise() {
+  if command_exists mise; then
+    printf "\nChecking for updates with mise...\n"
+    mise self-update -y
+    mise outdated -y
+  fi
+}
+
 update_package_manager
 update_flatpak
+update_mise
 
 if $reboot_after_update; then
   reboot_time=3
