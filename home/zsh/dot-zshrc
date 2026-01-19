@@ -16,11 +16,21 @@ source $HOME/.config/sh/tmux.sh
 source $HOME/.config/zsh/plugins.zsh
 source $HOME/.config/zsh/autocomplete.zsh
 
-if [[ -f ~/.local/bin/mise ]]; then
-  eval "$(~/.local/bin/mise activate zsh)"
+if command_exists mise; then
+  if [[ -f ~/.local/bin/mise ]]; then
+    eval "$(~/.local/bin/mise activate zsh)"
+  else
+    eval "$(mise activate zsh)"
+  fi
 fi
 if command_exists fnox; then
-  eval "$(fnox activate zsh)"
+  FNOX_PATH=$(mise which fnox 2>/dev/null)
+  if [[ -n "$FNOX_PATH" ]]; then
+    eval "$($FNOX_PATH activate zsh)"
+  else
+    eval "$(fnox activate zsh)"
+  fi
+
   if [[ -f ~/.ssh/fnox ]]; then
     export FNOX_AGE_KEY_FILE=~/.ssh/fnox
   fi
