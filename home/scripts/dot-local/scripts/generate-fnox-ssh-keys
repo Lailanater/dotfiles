@@ -8,9 +8,22 @@ if [[ -f "$PUBLIC_KEY_LOC" ]] && [[ -f "$PRIVATE_KEY_LOC" ]]; then
   exit 0
 fi
 
+
+# You must have 1password-cli installed for this script to work
+if ! command -v op &>/dev/null; then
+  exit 1
+fi
+
+op whoami 2>&1 | grep -q "no account found"
+
+# If the above command exits cleanly, there is no account available to access 1password
+if [[ $? -eq 0 ]]; then
+  exit 1
+fi
+
 SSH_KEY_DATA=$(op item get "FNOX SSH Key" --reveal --format json 2>/dev/null)
 
-# If op command above fails then exit the script
+# We couldn't get the data
 if [[ $? != 0 ]]; then
   exit 1
 fi
