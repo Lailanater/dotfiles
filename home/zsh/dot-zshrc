@@ -31,6 +31,9 @@ if command_exists fnox; then
     eval "$(fnox activate zsh)"
   fi
 
+  if [[ ! -f ~/.ssh/fnox && -f ~/.local/scripts/generate-fnox-ssh-keys ]]; then
+    ~/.local/scripts/generate-fnox-ssh-keys
+  fi
   if [[ -f ~/.ssh/fnox ]]; then
     export FNOX_AGE_KEY_FILE=~/.ssh/fnox
   fi

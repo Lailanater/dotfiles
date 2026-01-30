@@ -1,0 +1,36 @@
+#!/usr/bin/env sh
+
+PUBLIC_KEY_LOC="$HOME/.ssh/fnox.pub"
+PRIVATE_KEY_LOC="$HOME/.ssh/fnox"
+
+# If we already have the public and private keys no need to run the script
+if [[ -f "$PUBLIC_KEY_LOC" ]] && [[ -f "$PRIVATE_KEY_LOC" ]]; then
+  exit 0
+fi
+
+SSH_KEY_DATA=$(op item get "FNOX SSH Key" --reveal --format json 2>/dev/null)
+
+# If op command above fails then exit the script
+if [[ $? != 0 ]]; then
+  exit 1
+fi
+
+SSH_FIELDS=$(echo $SSH_KEY_DATA | jq -r '.fields.[]')
+
+function put_field_in_file() {
+  local field="$1"
+  local filename="$2"
+  local dir=$(dirname $filename)
+
+  mkdir -p "$dir"
+
+  echo $SSH_FIELDS | jq -r "select(.id==\"$field\") | .value" > $filename
+}
+
+if [[ ! -f "$PUBLIC_KEY_LOC" ]]; then
+  put_field_in_file "public_key" "$PUBLIC_KEY_LOC"
+fi
+
+if [[ ! -f "$PRIVATE_KEY_LOC" ]]; then
+  put_field_in_file "private_key" "$PRIVATE_KEY_LOC"
+fi
