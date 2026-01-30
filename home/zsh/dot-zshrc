@@ -31,11 +31,19 @@ if command_exists fnox; then
     eval "$(fnox activate zsh)"
   fi
 
+  # Create encryption key(s) if missing with ssh priority over age key
   if [[ ! -f ~/.ssh/fnox && -f ~/.local/scripts/generate-fnox-ssh-keys ]]; then
     ~/.local/scripts/generate-fnox-ssh-keys
   fi
+  if [[ ! -f ~/.ssh/fnox && ! -f ~/.config/fnox/age.txt && -f ~/.local/scripts/generate-fnox-age-key ]]; then
+    ~/.local/scripts/generate-fnox-age-key
+  fi
+
+  # Use ssh preferably, otherwise fallback to age key
   if [[ -f ~/.ssh/fnox ]]; then
     export FNOX_AGE_KEY_FILE=~/.ssh/fnox
+  elif [[ -f ~/.config/fnox/age.txt ]]; then
+    export FNOX_AGE_KEY=$(cat ~/.config/fnox/age.txt | grep "AGE-SECRET-KEY")
   fi
 fi
 

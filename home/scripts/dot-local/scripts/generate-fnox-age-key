@@ -1,0 +1,15 @@
+#!/usr/bin/env sh
+
+FNOX_AGE_KEY_LOC="$HOME/.config/fnox/age.txt"
+
+# If we already have the age key no need to run the script
+if [[ -f "$FNOX_AGE_KEY_LOC" ]]; then
+  exit 0
+fi
+
+# Must have age installed
+if ! (command -v age-keygen &> /dev/null); then
+  exit 1
+fi
+
+age-keygen -o "$FNOX_AGE_KEY_LOC" &>/dev/null
