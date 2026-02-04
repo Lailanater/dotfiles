@@ -59,6 +59,7 @@ function update_mise() {
     mise self-update -y
     mise install -y
     mise upgrade -y
+    mise prune -y
   fi
 }
 
