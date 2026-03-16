@@ -5,11 +5,11 @@ Type = Package
 Target = proton-cachyos-slr
 
 [Action]
-Depends = curl
 Depends = wget
 Depends = jq
 Depends = tar
 Depends = sed
+Depends = parallel
 When = PostTransaction
 Exec = /usr/local/bin/install-proton-cachyos-latest
 Description = Installing optimized versions of proton-cachyos-slr...
