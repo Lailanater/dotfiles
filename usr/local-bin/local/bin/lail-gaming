@@ -1,6 +1,5 @@
 #!/usr/bin/env sh
 
-export PROTON_USE_NTSYNC=${PROTON_USE_NTSYNC:-1}
 export PROTON_XESS_UPGRADE=${PROTON_XESS_UPGRADE:-1}
 
 if command -v nvidia-smi &>/dev/null; then

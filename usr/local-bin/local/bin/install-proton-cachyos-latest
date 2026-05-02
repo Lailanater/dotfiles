@@ -40,4 +40,4 @@ function install_cachyos_proton() {
 
 export -f install_cachyos_proton
 
-parallel install_cachyos_proton ::: "v3" "v4"
+install_cachyos_proton "v3"
