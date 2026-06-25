@@ -7,12 +7,21 @@ fi
 
 export RELEASES=$(wget -qO- https://api.github.com/repos/CachyOS/proton-cachyos/releases/latest)
 
+function cleanup() {
+  rm -rf "$ASSET_LOC"
+}
+
 function install_cachyos_proton() {
   OPTIMIZATION=$1
 
-  URL=$(jq -r ".assets[] | select(.name? | match(\"proton-cachyos-.*slr-x86_64_$OPTIMIZATION.tar.xz$\")) | .browser_download_url" <<<"$RELEASES")
-  ASSET_LOC="/tmp/$(basename $URL)"
-  VERSION=$(sed -E "s/.*proton-cachyos-(.*)-slr.*/\1/" <<<"$URL")
+  TAR_URL=$(jq -r ".assets[] | select(.name? | match(\"proton-cachyos-.*slr-x86_64_$OPTIMIZATION.tar.xz$\")) | .browser_download_url" <<<"$RELEASES")
+  TAR_NAME="$(basename $TAR_URL)"
+  SHA_URL=$(sed -E "s/(.*).tar.xz/\1.sha512sum/" <<<"$TAR_URL")
+  SHA_NAME="$(basename $SHA_URL)"
+  VERSION=$(sed -E "s/.*proton-cachyos-(.*)-slr.*/\1/" <<<"$TAR_URL")
+
+  ASSET_LOC="/tmp/proton-cachyos-latest"
+  mkdir -p "$ASSET_LOC"
 
   DEST="/home/$SUDO_USER/.steam/steam/compatibilitytools.d/proton-cachyos-slr-$OPTIMIZATION-latest"
   if [[ -f "$DEST/compatibilitytool.vdf" ]]; then
@@ -22,20 +31,31 @@ function install_cachyos_proton() {
     fi
   fi
 
-  echo "Downloading $(basename $URL)..."
-  if wget -O "$ASSET_LOC" -q "$URL"; then
+  echo "Downloading $TAR_NAME..."
+  if wget -O "$ASSET_LOC/$TAR_NAME" -q "$TAR_URL"; then
+    echo "Downloading $SHA_NAME..."
+    wget -O "$ASSET_LOC/$SHA_NAME" -q "$SHA_URL"
+    echo "Verifying SHA512..."
+    if ! (cd "$ASSET_LOC" && sha512sum -c "$SHA_NAME"); then
+      echo "Checksum failed! Aborting."
+      cleanup
+      exit 1
+    fi
+
     rm -rf "$DEST"
     mkdir -p "$DEST"
 
-    tar -xf "$ASSET_LOC" -C "$DEST" --strip-components=1
+    tar -xf "$ASSET_LOC/$TAR_NAME" -C "$DEST" --strip-components=1
     sed -i -E -e "s/\"proton-cachyos-.*-slr-.*\"/\"proton-cachyos-slr-${OPTIMIZATION}-latest\"/" \
       -e "s/\"display_name\" \"(.*)-latest\"/\"display_name\" \"\1 ($VERSION)\"/" \
       "$DEST/compatibilitytool.vdf"
+
     chown -R "$SUDO_USER":"$SUDO_USER" "$DEST"
 
-    rm "$ASSET_LOC"
     echo "Installed proton-cachyos-slr-$OPTIMIZATION-latest!"
   fi
+
+  cleanup
 }
 
 export -f install_cachyos_proton
