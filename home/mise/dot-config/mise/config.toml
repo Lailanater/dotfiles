@@ -3,6 +3,7 @@ minimum_release_age = "0s"
 
 [tools]
 age = "latest"
+claude-code = "latest"
 fnox = "latest"
 go = "latest"
 node = "latest"
