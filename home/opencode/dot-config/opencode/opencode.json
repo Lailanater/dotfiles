@@ -22,5 +22,12 @@
         }
       }
     }
+  },
+  "mcp": {
+    "fnox": {
+      "type": "local",
+      "command": ["fnox", "mcp"],
+      "enabled": true
+    }
   }
 }
