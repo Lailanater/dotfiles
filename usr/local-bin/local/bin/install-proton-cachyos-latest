@@ -1,8 +1,15 @@
 #!/usr/bin/env bash
 
-if [[ -z "$SUDO_USER" ]]; then
-  echo "Please run with sudo."
-  exit 1
+if [[ "$(id -u)" -eq 0 ]]; then
+	echo "sudo user: '$SUDO_USER'"
+  if [[ -z "$SUDO_USER" ]] || [[ "$SUDO_USER" == "root" ]]; then
+    echo "This script should not be run by root user. Use sudo instead." >&2
+    exit 1
+  fi
+
+  INSTALL_USER="$SUDO_USER"
+else
+  INSTALL_USER="$(id -un)"
 fi
 
 export RELEASES=$(wget -qO- https://api.github.com/repos/CachyOS/proton-cachyos/releases/latest)
@@ -23,7 +30,7 @@ function install_cachyos_proton() {
   ASSET_LOC="/tmp/proton-cachyos-latest"
   mkdir -p "$ASSET_LOC"
 
-  DEST="/home/$SUDO_USER/.steam/steam/compatibilitytools.d/proton-cachyos-slr-$OPTIMIZATION-latest"
+  DEST="/home/$INSTALL_USER/.steam/steam/compatibilitytools.d/proton-cachyos-slr-$OPTIMIZATION-latest"
   if [[ -f "$DEST/compatibilitytool.vdf" ]]; then
     if grep -q "$VERSION" "$DEST/compatibilitytool.vdf"; then
       echo "Latest version of $OPTIMIZATION already installed"
@@ -50,7 +57,7 @@ function install_cachyos_proton() {
       -e "s/\"display_name\" \"(.*)-latest\"/\"display_name\" \"\1 ($VERSION)\"/" \
       "$DEST/compatibilitytool.vdf"
 
-    chown -R "$SUDO_USER":"$SUDO_USER" "$DEST"
+    chown -R "$INSTALL_USER":"$INSTALL_USER" "$DEST"
 
     echo "Installed proton-cachyos-slr-$OPTIMIZATION-latest!"
   fi

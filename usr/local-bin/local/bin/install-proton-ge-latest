@@ -1,0 +1,71 @@
+#!/usr/bin/env bash
+
+set -euo pipefail
+
+if [[ "$(id -u)" -eq 0 ]]; then
+  if [[ -z "$SUDO_USER" ]] || [[ "$SUDO_USER" == "root" ]]; then
+    echo "This script should not be run by root user. Use sudo instead." >&2
+    exit 1
+  fi
+
+  INSTALL_USER="$SUDO_USER"
+else
+  INSTALL_USER="$(id -un)"
+fi
+
+HOME="/home/$INSTALL_USER"
+
+if [[ -f $HOME/.steam/steam/compatibilitytools.d/proton-ge-latest/compatibilitytool.vdf ]]; then
+	installed_ge_version=$(sed -n -E 's/\s*"display_name" "Proton GE Latest \((.*)\)"/\1/p' $HOME/.steam/steam/compatibilitytools.d/proton-ge-latest/compatibilitytool.vdf)
+	ge_version=$(curl -s https://api.github.com/repos/GloriousEggroll/proton-ge-custom/releases/latest | jq -r '.tag_name')
+	if [[ $installed_ge_version = $ge_version ]]; then
+		echo "Already installed latest version ($ge_version)!"
+		exit 0
+	else
+		echo "Upgrading from $installed_ge_version to $ge_version..."
+	fi
+fi
+
+# Make a temporary working directory
+echo "Creating temporary working directory..."
+rm -rf /tmp/proton-ge-custom
+mkdir /tmp/proton-ge-custom
+cd /tmp/proton-ge-custom
+
+# Download the tarball for the latest release
+echo "Fetching tarball URL..."
+
+tarball_url=$(curl -s https://api.github.com/repos/GloriousEggroll/proton-ge-custom/releases/latest | jq -r '.assets[] | select(.name | endswith(".tar.gz") and (contains("aarch64") | not)).browser_download_url')
+tarball_name=$(basename $tarball_url)
+echo "Downloading tarball: $tarball_name..."
+curl -# -L $tarball_url -o $tarball_name --no-progress-meter
+
+# Download the checksum for the latest release
+echo "Fetching checksum URL..."
+checksum_url=$(curl -s https://api.github.com/repos/GloriousEggroll/proton-ge-custom/releases/latest | jq -r '.assets[] | select(.name | endswith(".sha512sum") and (contains("aarch64") | not)).browser_download_url')
+checksum_name=$(basename $checksum_url)
+echo "Downloading checksum: $checksum_name..."
+curl -# -L $checksum_url -o $checksum_name --no-progress-meter
+
+# Verify the downloaded tarball with the downloaded checksum
+echo "Verifying tarball $tarball_name with checksum $checksum_name..."
+sha512sum -c $checksum_name
+# If result the verification succeeds, continue
+
+# Make a Steam compatibility tools folder if it does not exist
+echo "Creating a Steam compatibility tools folder if it does not exist..."
+mkdir -p $HOME/.steam/steam/compatibilitytools.d/proton-ge-latest
+
+rm -rf $HOME/.steam/steam/compatibilitytools.d/proton-ge-latest/*
+
+# Extract the GE-Proton tarball to the Steam compatibility tools folder
+echo "Extracting $tarball_name to the Steam compatibility tools folder..."
+tar --strip-components 1 -xf $tarball_name -C $HOME/.steam/steam/compatibilitytools.d/proton-ge-latest
+
+ge_version=$(echo $tarball_name | sed -E 's/(.*).tar.gz/\1/')
+# Update internal tool name
+sed -E -i "s/$ge_version(\" \/\/ Internal name of this tool)/proton-ge-latest\1/" $HOME/.steam/steam/compatibilitytools.d/proton-ge-latest/compatibilitytool.vdf
+# Update display name
+sed -i "s/$ge_version/Proton GE Latest ($ge_version)/" $HOME/.steam/steam/compatibilitytools.d/proton-ge-latest/compatibilitytool.vdf
+
+echo "Done"
