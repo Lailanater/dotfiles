@@ -12,3 +12,4 @@ Depends = sed
 When = PostTransaction
 Exec = /usr/local/bin/install-proton-cachyos-latest
 Description = Installing optimized versions of proton-cachyos-slr...
+NetworkAccess = allowed

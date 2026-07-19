@@ -1,7 +1,6 @@
 #!/usr/bin/env bash
 
 if [[ "$(id -u)" -eq 0 ]]; then
-	echo "sudo user: '$SUDO_USER'"
   if [[ -z "$SUDO_USER" ]] || [[ "$SUDO_USER" == "root" ]]; then
     echo "This script should not be run by root user. Use sudo instead." >&2
     exit 1
