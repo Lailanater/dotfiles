@@ -1,4 +1,4 @@
-#!/usr/bin/env sh
+#!/usr/bin/env bash
 
 export PROTON_XESS_UPGRADE=${PROTON_XESS_UPGRADE:-1}
 
@@ -10,8 +10,12 @@ else
   export PROTON_FSR4_RDNA3_UPGRADE=${PROTON_FSR4_RDNA3_UPGRADE:-1}
 fi
 
-if command -v lail-renice &>/dev/null; then
-  exec lail-renice game-performance mangohud "$@"
-else
-  exec game-performance mangohud "$@"
+if command -v scxctl >/dev/null; then
+  scxctl start -s lavd
+fi
+
+game-performance mangohud "$@"
+
+if command -v scxctl >/dev/null; then
+  scxctl stop
 fi
