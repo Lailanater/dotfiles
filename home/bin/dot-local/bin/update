@@ -49,7 +49,7 @@ function update_flatpak() {
       flatpak_options="-y"
     fi
 
-    flatpak $flatpak_options update
+    flatpak $flatpak_options update --noninteractive
   fi
 }
 
