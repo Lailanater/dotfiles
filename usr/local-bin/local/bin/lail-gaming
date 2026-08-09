@@ -1,6 +1,9 @@
 #!/usr/bin/env bash
 
 export PROTON_XESS_UPGRADE=${PROTON_XESS_UPGRADE:-1}
+export LOW_LATENCY_LAYER=${LOW_LATENCY_LAYER:-1}
+# Changes the Optiscaler menu button to "Home" instead of the default "Insert"
+export PROTON_OPTISCALER_CONFIG="Menu.ShortcutKey=0x24"
 
 if command -v nvidia-smi &>/dev/null; then
   export PROTON_DLSS_UPGRADE=${PROTON_DLSS_UPGRADE:-1}
@@ -10,12 +13,14 @@ else
   export PROTON_FSR4_RDNA3_UPGRADE=${PROTON_FSR4_RDNA3_UPGRADE:-1}
 fi
 
-if command -v scxctl >/dev/null; then
-  scxctl start -s lavd
+if command -v scxctl >/dev/null && [[ "$(scxctl get)" == "no scx scheduler running" ]]; then
+  scxctl start -s lavd -m gaming
 fi
 
 game-performance mangohud "$@"
 
-if command -v scxctl >/dev/null; then
+# Check if another game is running at the same time
+# We only want to stop scx-sched if we are done gaming
+if command -v scxctl >/dev/null && ! (ps aux | grep -q "[g]ame-performance"); then
   scxctl stop
 fi
