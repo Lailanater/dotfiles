@@ -13,14 +13,18 @@ else
   export PROTON_FSR4_RDNA3_UPGRADE=${PROTON_FSR4_RDNA3_UPGRADE:-1}
 fi
 
-if command -v scxctl >/dev/null && [[ "$(scxctl get)" == "no scx scheduler running" ]]; then
-  scxctl start -s lavd -m gaming
+if command -v scxctl >/dev/null && [[ "$DISABLE_SCX" != "1" ]]; then
+  if [[ "$(scxctl get)" == "no scx scheduler running" ]]; then
+    scxctl start -s "${SCX_SCHED:-lavd}" -m gaming
+  fi
 fi
 
 game-performance mangohud "$@"
 
-# Check if another game is running at the same time
-# We only want to stop scx-sched if we are done gaming
-if command -v scxctl >/dev/null && ! (ps aux | grep -q "[g]ame-performance"); then
-  scxctl stop
+if command -v scxctl >/dev/null && [[ "$DISABLE_SCX" != "1" ]]; then
+  # Check if another game is running at the same time
+  # We only want to stop scx-sched if we are done gaming
+  if ! (ps aux | grep -q "[g]ame-performance"); then
+    scxctl stop
+  fi
 fi
