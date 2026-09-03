@@ -28,6 +28,11 @@
       "type": "local",
       "command": ["fnox", "mcp"],
       "enabled": true
+    },
+    "mise": {
+      "type": "local",
+      "command": ["mise", "mcp"],
+      "enabled": true
     }
   }
 }
