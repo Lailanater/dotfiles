@@ -19,8 +19,13 @@ function cleanup() {
 
 function install_cachyos_proton() {
   OPTIMIZATION=$1
+  if [[ -z "$OPTIMIZATION" ]] || [[ "$OPTIMIZATION" = "base" ]]; then
+    OPT_TAG=""
+  else
+    OPT_TAG="_$OPTIMIZATION"
+  fi
 
-  TAR_URL=$(jq -r ".assets[] | select(.name? | match(\"proton-cachyos-.*slr-x86_64_$OPTIMIZATION.tar.xz$\")) | .browser_download_url" <<<"$RELEASES")
+  TAR_URL=$(jq -r ".assets[] | select(.name? | match(\"proton-cachyos-.*slr-x86_64$OPT_TAG.tar.xz$\")) | .browser_download_url" <<<"$RELEASES")
   TAR_NAME="$(basename $TAR_URL)"
   SHA_URL=$(sed -E "s/(.*).tar.xz/\1.sha512sum/" <<<"$TAR_URL")
   SHA_NAME="$(basename $SHA_URL)"
@@ -29,10 +34,10 @@ function install_cachyos_proton() {
   ASSET_LOC="/tmp/proton-cachyos-latest"
   mkdir -p "$ASSET_LOC"
 
-  DEST="/home/$INSTALL_USER/.steam/steam/compatibilitytools.d/proton-cachyos-slr-$OPTIMIZATION-latest"
+  DEST="/home/$INSTALL_USER/.steam/steam/compatibilitytools.d/proton-cachyos-slr$OPT_TAG-latest"
   if [[ -f "$DEST/compatibilitytool.vdf" ]]; then
     if grep -q "$VERSION" "$DEST/compatibilitytool.vdf"; then
-      echo "Latest version of $OPTIMIZATION already installed"
+      echo "Latest version of proton-cachyos-slr$OPT_TAG already installed"
       exit 0
     fi
   fi
@@ -52,13 +57,13 @@ function install_cachyos_proton() {
     mkdir -p "$DEST"
 
     tar -xf "$ASSET_LOC/$TAR_NAME" -C "$DEST" --strip-components=1
-    sed -i -E -e "s/\"proton-cachyos-.*-slr-.*\"/\"proton-cachyos-slr-${OPTIMIZATION}-latest\"/" \
+    sed -i -E -e "s/\"proton-cachyos-.*-slr-.*\"/\"proton-cachyos-slr${OPT_TAG}-latest\"/" \
       -e "s/\"display_name\" \"(.*)-latest\"/\"display_name\" \"\1 ($VERSION)\"/" \
       "$DEST/compatibilitytool.vdf"
 
     chown -R "$INSTALL_USER":"$INSTALL_USER" "$DEST"
 
-    echo "Installed proton-cachyos-slr-$OPTIMIZATION-latest!"
+    echo "Installed proton-cachyos-slr$OPT_TAG-latest!"
   fi
 
   cleanup
@@ -66,4 +71,4 @@ function install_cachyos_proton() {
 
 export -f install_cachyos_proton
 
-install_cachyos_proton "v3"
+install_cachyos_proton "base"
