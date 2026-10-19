@@ -14,3 +14,17 @@ python = "latest"
 rust = "latest"
 typst = "latest"
 usage = "latest"
+
+[tasks.proton-ge]
+skip_if = "! command -v install-proton-ge-latest"
+description = "Install latest version of GE Proton"
+run = "install-proton-ge-latest"
+
+[tasks.proton-cachyos]
+skip_if = "! command -v install-proton-cachyos-latest"
+description = "Install latest version of CachyOS Proton"
+run = "install-proton-cachyos-latest"
+
+[tasks.proton-latest]
+description = "Install latest versions of CachyOS Proton and GE Proton"
+run = { tasks = ["proton-ge", "proton-cachyos"] }
