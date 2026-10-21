@@ -1,6 +1,9 @@
 [settings]
 minimum_release_age = "0s"
 
+[settings.self_update]
+auto = true
+
 [tools]
 age = "latest"
 claude-code = "latest"
@@ -15,16 +18,41 @@ rust = "latest"
 typst = "latest"
 usage = "latest"
 
+[task_templates.install-proton-template]
+vars = { latest_version = "{{ exec(command='mise latest ' ~ vars.tool ~ '@latest') | trim }}", dir_path = "$HOME/.steam/steam/compatibilitytools.d/{{ vars.internal_name }}", installed_version = "{{ exec(command=`[ -f ` ~ vars.dir_path ~ `/version ] && awk '{ print $2 }' ` ~ vars.dir_path ~ `/version || echo none`) | trim }}" }
+skip_if = "[ {{ vars.latest_version }} = {{ vars.installed_version }} ]"
+run = [
+  "mise install-into -y {{ vars.tool }}@latest {{ vars.dir_path }}",
+  "mise run rename-steam-compat-file '{{ vars.latest_version }}' '{{ vars.internal_name }}' '{{ vars.display_name }}' '{{ vars.dir_path }}'",
+]
+
+[tasks.rename-steam-compat-file]
+description = ""
+usage = '''
+arg "<version>"
+arg "<internal_name>"
+arg "<display_name>"
+arg "<dir_path>"
+'''
+run = '''
+sed -i -E \
+  -e "s/\"display_name\" \"(.*)\"/\"display_name\" \"$usage_display_name ($usage_version)\"/" \
+  -e "s/\"(.*)\" \/\/ Internal/\"$usage_internal_name\" \/\/ Internal/" \
+  $usage_dir_path/compatibilitytool.vdf
+'''
+
+[tasks.proton-wineland]
+extends = "install-proton-template"
+vars = { tool = "github:nanomatters/proton-salkim", internal_name = "proton-wineland-latest", display_name = "Wineland Proton Latest" }
+
 [tasks.proton-ge]
-skip_if = "! command -v install-proton-ge-latest"
-description = "Install latest version of GE Proton"
-run = "install-proton-ge-latest"
+extends = "install-proton-template"
+vars = { tool = "github:GloriousEggroll/proton-ge-custom", internal_name = "proton-ge-latest", display_name = "GE Proton Latest" }
 
 [tasks.proton-cachyos]
-skip_if = "! command -v install-proton-cachyos-latest"
-description = "Install latest version of CachyOS Proton"
-run = "install-proton-cachyos-latest"
+extends = "install-proton-template"
+vars = { tool = "github:CachyOS/proton-cachyos", internal_name = "proton-cachyos-latest", display_name = "CachyOS Proton Latest" }
 
 [tasks.proton-latest]
-description = "Install latest versions of CachyOS Proton and GE Proton"
-run = { tasks = ["proton-ge", "proton-cachyos"] }
+description = "Install all proton latest versions"
+run = { tasks = ["proton-ge", "proton-cachyos", "proton-wineland"] }
