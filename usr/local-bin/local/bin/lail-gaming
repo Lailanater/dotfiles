@@ -1,17 +1,8 @@
 #!/usr/bin/env bash
 
-export MANGOHUD=${MANGOHUD:-1}
-export PROTON_XESS_UPGRADE=${PROTON_XESS_UPGRADE:-1}
-export LOW_LATENCY_LAYER=${LOW_LATENCY_LAYER:-1}
 # Changes the Optiscaler menu button to "Home" instead of the default "Insert"
 export PROTON_OPTISCALER_CONFIG="Menu.ShortcutKey=0x24"
-
-if command -v nvidia-smi &>/dev/null; then
-  export PROTON_DLSS_UPGRADE=${PROTON_DLSS_UPGRADE:-1}
-  export PROTON_NVIDIA_LIBS=${PROTON_NVIDIA_LIBS:-1}
-else
-  # Could do a conditional check with "pacman -Qs amd-ucode &>/dev/null"?
-  export PROTON_FSR4_UPGRADE=${PROTON_FSR4_UPGRADE:-1}
-fi
+export PROTON_FSR4_UPGRADE=${PROTON_FSR4_UPGRADE:-1}
+export LOW_LATENCY_LAYER=${LOW_LATENCY_LAYER:-1}
 
 exec game-performance "$@"
