@@ -12,7 +12,7 @@ return {
 	font = wezterm.font("Intone Mono Nerd Font"),
 	font_size = 14,
 
-	color_scheme = "Everforest Dark (Hard)",
+	color_scheme = "Catppuccin Mocha",
 
 	hide_tab_bar_if_only_one_tab = true,
 }
