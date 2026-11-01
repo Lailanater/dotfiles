@@ -4,5 +4,6 @@
 export PROTON_OPTISCALER_CONFIG="Menu.ShortcutKey=0x24"
 export PROTON_FSR4_UPGRADE=${PROTON_FSR4_UPGRADE:-1}
 export LOW_LATENCY_LAYER=${LOW_LATENCY_LAYER:-1}
+export MANGOHUD=${MANGOHUD:-1}
 
 exec game-performance "$@"
