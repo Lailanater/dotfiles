@@ -4,6 +4,11 @@ minimum_release_age = "0s"
 [settings.self_update]
 auto = true
 
+[tool_alias]
+proton-ge = "github:GloriousEggroll/proton-ge-custom"
+proton-wineland = "github:nanomatters/proton-salkim"
+proton-cachyos = "github:CachyOS/proton-cachyos"
+
 [tools]
 age = "latest"
 claude-code = "latest"
@@ -43,15 +48,15 @@ sed -i -E \
 
 [tasks.proton-wineland]
 extends = "install-proton-template"
-vars = { tool = "github:nanomatters/proton-salkim", internal_name = "proton-wineland-latest", display_name = "Wineland Proton Latest" }
+vars = { tool = "proton-wineland", internal_name = "proton-wineland-latest", display_name = "Wineland Proton Latest" }
 
 [tasks.proton-ge]
 extends = "install-proton-template"
-vars = { tool = "github:GloriousEggroll/proton-ge-custom", internal_name = "proton-ge-latest", display_name = "GE Proton Latest" }
+vars = { tool = "proton-ge", internal_name = "proton-ge-latest", display_name = "GE Proton Latest" }
 
 [tasks.proton-cachyos]
 extends = "install-proton-template"
-vars = { tool = "github:CachyOS/proton-cachyos", internal_name = "proton-cachyos-latest", display_name = "CachyOS Proton Latest" }
+vars = { tool = "proton-cachyos", internal_name = "proton-cachyos-latest", display_name = "CachyOS Proton Latest" }
 
 [tasks.proton-latest]
 description = "Install all proton latest versions"
