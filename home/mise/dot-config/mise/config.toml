@@ -60,4 +60,4 @@ vars = { tool = "proton-cachyos", internal_name = "proton-cachyos-latest", displ
 
 [tasks.proton-latest]
 description = "Install all proton latest versions"
-run = { tasks = ["proton-ge", "proton-cachyos", "proton-wineland"] }
+run = { tasks = ["proton-ge", "proton-cachyos"] }
