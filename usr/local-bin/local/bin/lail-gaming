@@ -2,13 +2,13 @@
 
 ## Optiscaler ##
 # Changes the Optiscaler menu button to "Home" instead of the default "Insert"
-export PROTON_OPTISCALER_CONFIG="Menu.ShortcutKey=0x24"
+# export PROTON_OPTISCALER_CONFIG="Menu.ShortcutKey=0x24"
 
 ## FSR ##
-export PROTON_FSR4_UPGRADE=${PROTON_FSR4_UPGRADE:-1}
+# export PROTON_FSR4_UPGRADE=${PROTON_FSR4_UPGRADE:-1}
 
 ## Low Latency ##
-export LOW_LATENCY_LAYER=${LOW_LATENCY_LAYER:-1}
+# export LOW_LATENCY_LAYER=${LOW_LATENCY_LAYER:-1}
 
 ## Mangohud ##
 export MANGOHUD=${MANGOHUD:-1}
